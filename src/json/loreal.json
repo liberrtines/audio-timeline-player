@@ -1,0 +1,61 @@
+{
+    "Information":
+    {
+        "name": "L'Oreal Podcasts",
+        "last updated": "2015-03-20"
+    },
+    "Categories": [
+    {
+        "category_name": "L’Oréal Chapter One",
+        "mp3_url": "mp3/6.mp3",
+        "chapters": [
+        {
+            "name": "DÉCOUVREZ LE NOUVEAU SITE DE LA FONDATION L’ORÉAL",
+            "timestamp": 0,
+            "image": "http://loreal-dam-front-resources-corp-fr-cdn.brainsonic.com/ressources/afile/130024-9f5c6-picture_client_format_0-fondation.jpg"
+        },
+        {
+            "name": "CHIFFRE D'AFFAIRES AU 30 SEPTEMBRE 2015",
+            "timestamp": 30,
+            "image": "http://www.loreal-finance.com/_docs/images_contenu/default312.jpg"
+        },
+        {
+            "name": "SANOFLORE : DÉCOUVREZ LES POUVOIRS DU BAUME DE ROSÉE SUR VOTRE PEAU",
+            "timestamp": 50,
+            "image": "http://loreal-dam-front-resources-corp-fr-cdn.brainsonic.com/ressources/afile/129922-f3a2a-picture_client_format_0-sanoflore.jpg"
+        },
+        {
+            "name": "QUATRE ASTUCES POUR RÉUSSIR SON ENTRETIEN D’EMBAUCHE",
+            "timestamp": 120,
+            "image": "http://loreal-dam-front-resources-corp-fr-cdn.brainsonic.com/ressources/afile/125211-2b848-picture_client_format_0-l-oreal-entreprise-la-plus-attractive.jpg"
+        }]
+    },
+    {
+        "category_name": "L’Oréal Chapter Two",
+        "mp3_url": "http://goommarketing.com/top10/songs/3.mp3",
+        "chapters": [
+            {
+                "name": "First Chapter",
+                "timestamp": 0,
+                "image": "images/0.jpg"
+            },
+            {
+                "name": "Second Chapter",
+                "timestamp": 25,
+                "image": "images/1.jpg"
+            },
+            {
+                "name": "Third Chapter",
+                "timestamp": 53,
+                "image": "images/2.jpg"
+            },
+            {
+                "name": "Fourth Chapter",
+                "timestamp": 120,
+                "image": "images/3.jpg"
+            }
+
+        ]
+
+    }]
+}

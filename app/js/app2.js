@@ -149,14 +149,11 @@ var Loreal = (function ($)
                     }
                 }
 
-
                 // -------------o Marker is set here because it is not yet ready until Audio is initialized
                 _.markers = $('.markers')
 
-
-
                 var wavesurfer = Object.create(WaveSurfer);
-
+                console.log(wavesurfer);
                 wavesurfer.init(
                 {
                     container: '#wave-timeline',
@@ -166,7 +163,7 @@ var Loreal = (function ($)
                     cursorColor: 'rgba(0,0,0,0)'
                 });
 
-                wavesurfer.load(_.audioMp3File);
+                // wavesurfer.load(_.audioMp3File);
 
                 _.firstInit = true;
             }

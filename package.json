@@ -2,10 +2,26 @@
   "name": "loreal",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_modules/webpack-dev-server/bin/webpack-dev-server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.0.15",
+    "babel-loader": "^6.0.1",
+    "jquery": "^2.1.4",
+    "node-sass": "^3.4.1",
+    "sass-loader": "^3.1.1",
+    "wavesurfer.js": "^1.0.47",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "^3.1.0",
+    "css-loader": "^0.22.0",
+    "scss-loader": "0.0.1",
+    "style-loader": "^0.13.0"
+  }
 }
