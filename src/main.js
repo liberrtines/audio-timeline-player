@@ -26,7 +26,7 @@ import { EventListener } from './methods/Events'
  *  APPLICATION STARTS HERE
  *	Get the Promise of the JSON call
  *	After success, then load the Mp3 to the player
- *	The, load the remaining methods
+ *	Then load the remaining methods
  * 
  */
 
@@ -47,11 +47,8 @@ loadJSON().then((data) =>
             EventListener
             ------o Listens for any events, ex. audio playing
         
-            EventListener
-            ------o Listens for any events, ex. audio playing
-        
             initClickEvents
-            ------o Calls an action when element is clicked on
+            ------o Calls an action when element it is clicked on
          */
         
         Promise.all([initElements(), initViews(), createTimeline(), EventListener(), initClickEvents()])
