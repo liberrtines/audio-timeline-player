@@ -14,11 +14,11 @@ import __ from './variables/variables'
 // Load Functions
 /* beautify preserve:start */
 import { loadJSON } from './services/Api'
-import { initElements } from './components/initElements'
-import { initClickEvents } from './components/initClickEvents'
-import { initViews } from './components/initViews'
-import { createTimeline } from './components/createTimeline'
-import { EventListener } from './components/Events'
+import { initElements } from './methods/initElements'
+import { initClickEvents } from './methods/initClickEvents'
+import { initViews } from './methods/initViews'
+import { createTimeline } from './methods/createTimeline'
+import { EventListener } from './methods/Events'
 /* beautify preserve:end */
 
 
@@ -35,23 +35,25 @@ loadJSON().then((data) =>
 {
     initAudioObject().then(() =>
     {
-        // initElements
-        // ------o Sets Objects in Variables.js to a DOM Node in the HTML
+        /**
+            initElements
+            ------o Sets Objects in Variables.js to a DOM Node in the HTML
         
-        // initViews
-        // ------o Updates the HTML views ( album jacket, title, etc..)
+            initViews
+            ------o Updates the HTML views ( album jacket, title, etc..)
         
-        // createTimeline
-        // ------o Generates the Markers & WaveForm
+            createTimeline
+            ------o Generates the Markers & WaveForm
          
-        // EventListener
-        // ------o Listens for any events, ex. audio playing
+            EventListener
+            ------o Listens for any events, ex. audio playing
         
-        // EventListener
-        // ------o Listens for any events, ex. audio playing
+            EventListener
+            ------o Listens for any events, ex. audio playing
         
-        // initClickEvents
-        // ------o Calls an action when element is clicked on
+            initClickEvents
+            ------o Calls an action when element is clicked on
+         */
         
         Promise.all([initElements(), initViews(), createTimeline(), EventListener(), initClickEvents()])
         
