@@ -4,13 +4,12 @@ var webpack = require('webpack')
 
 module.exports = {
     entry: [
-        './src/main',
-        'webpack-dev-server/client?http://localhost:8080'
+        './src/main'
     ],
     output:
     {
-        publicPath: '/',
-        filename: 'main.js'
+        path: 'dist',
+        filename: 'bundle.js'
     },
     devtool: 'source-map',
     module:

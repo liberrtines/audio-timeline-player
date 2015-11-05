@@ -10,7 +10,6 @@ import './scss/main.scss'
 import __ from './variables/variables'
 
 
-
 // Load Functions
 /* beautify preserve:start */
 import { loadJSON } from './services/Api'
@@ -37,7 +36,7 @@ loadJSON().then((data) =>
     {
         /**
             initElements
-            ------o Sets Objects in Variables.js to a DOM Node in the HTML
+            ------o Sets empty Objects in Variables.js to a DOM Node in the HTML
         
             initViews
             ------o Updates the HTML views ( album jacket, title, etc..)
