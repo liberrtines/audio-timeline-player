@@ -7,7 +7,7 @@ class Player
 {
     constructor(options)
     {
-        this.options = options
+        this.__options = options
     }
 
     // PROTOTYPES
@@ -16,22 +16,22 @@ class Player
     {
 
         // First set Default Volume on Audio & Slider 
-        this.options.audioObject.volume = this.options.defaultVolume
-        this.options.volumeSlider.val(this.options.defaultVolume)
-        console.log(this.options.podcastData)
+        this.__options.audioObject.volume = this.__options.defaultVolume
+        this.__options.volumeSlider.val(this.__options.defaultVolume)
+        console.log(this.__options.podcastData)
             // Start Timeline Creation
-        if (!this.options.firstInit)
+        if (!this.__options.firstInit)
         {
-            for (let i = 0; i < this.options.podcastData.length; i++)
+            for (let i = 0; i < this.__options.podcastData.length; i++)
             {
                 /* beautify preserve:start */
-                if ($(this.options.$markers).length < this.options.podcastData.length)
+                if ($(this.__options.$markers).length < this.__options.podcastData.length)
                 {
-                    this.options.timeline.append(
+                    this.__options.timeline.append(
                         '<span class="markers" data-timestamp="'
-                        + this.options.podcastData[i].timestamp
+                        + this.__options.podcastData[i].timestamp
                         + '" style="left:'
-                        + (this.options.podcastData[i].timestamp * this.options.timeDifference)
+                        + (this.__options.podcastData[i].timestamp * this.__options.timeDifference)
                         + 'px"></span>');
                 }
                 else
@@ -41,7 +41,7 @@ class Player
                 /* beautify preserve:end */
             }
 
-            this.options.markers = $('.markers')
+            this.__options.markers = $('.markers')
 
             let wavesurfer = Object.create(WaveSurfer);
 
@@ -53,9 +53,9 @@ class Player
                 cursorColor: 'rgba(0,0,0,0)'
             });
 
-            wavesurfer.load(this.options.audioMp3File);
+            wavesurfer.load(this.__options.audioMp3File);
 
-            this.options.firstInit = true;
+            this.__options.firstInit = true;
         }
     }
 
@@ -63,28 +63,28 @@ class Player
     {
 
         // Volume Slider Event Listener
-        this.options.volumeSlider.on('input change', (e) =>
+        this.__options.volumeSlider.on('input change', (e) =>
         {
-            this.options.audioObject.volume = e.target.value
+            this.__options.audioObject.volume = e.target.value
         })
 
-        this.options.audioObject.addEventListener('timeupdate', () =>
+        this.__options.audioObject.addEventListener('timeupdate', () =>
         {
             // -------o Timeline width based on the current time of audio
-            this.options.timelineInner.css(
+            this.__options.timelineInner.css(
             {
-                width: (this.options.audioObject.currentTime) * this.options.timeDifference + 'px'
+                width: (this.__options.audioObject.currentTime) * this.__options.timeDifference + 'px'
             })
 
-            for (let i = $(this.options.markers).length - 1; i >= 0; i--)
+            for (let i = $(this.__options.markers).length - 1; i >= 0; i--)
             {
-                if (this.options.audioObject.currentTime > this.options.podcastData[i].timestamp)
+                if (this.__options.audioObject.currentTime > this.__options.podcastData[i].timestamp)
                 {
-                    if (!this.options.podcastData[i].seen)
+                    if (!this.__options.podcastData[i].seen)
                     {
-                        this.options.coverImage.attr('src', this.options.podcastData[i].image);
-                        this.options.theTitle.text(this.options.podcastData[i].name)
-                        this.options.podcastData[i].seen = true
+                        this.__options.coverImage.attr('src', this.__options.podcastData[i].image);
+                        this.__options.theTitle.text(this.__options.podcastData[i].name)
+                        this.__options.podcastData[i].seen = true
                     }
 
                     break
@@ -92,22 +92,22 @@ class Player
             }
         }, false)
 
-        this.options.audioObject.addEventListener('ended', () =>
+        this.__options.audioObject.addEventListener('ended', () =>
         {
             // Audio has Finished
 
-            this.options.estatActions.notifyPlayer('stop')
-            this.options.audioObject.currentTime = 0.1
+            this.__options.estatActions.notifyPlayer('stop')
+            this.__options.audioObject.currentTime = 0.1
 
-            this.options.playButton.show();
-            this.options.pauseButton.hide();
+            this.__options.playButton.show();
+            this.__options.pauseButton.hide();
 
         })
     }
 
     clickEvents()
     {
-        this.options.timeline.on('click', (e) =>
+        this.__options.timeline.on('click', (e) =>
         {
             /**
              * Timeline Calculation
@@ -125,27 +125,27 @@ class Player
              *  
              */
 
-            for (let i = 0; i < this.options.podcastData.length; i++)
+            for (let i = 0; i < this.__options.podcastData.length; i++)
             {
-                this.options.podcastData[i].seen = false;
+                this.__options.podcastData[i].seen = false;
             }
 
-            let now = this.options.duration * (e.offsetX / (this.options.timeline.outerWidth() * 2)) * 2;
+            let now = this.__options.duration * (e.offsetX / (this.__options.timeline.outerWidth() * 2)) * 2;
 
             playAt(now);
 
-            for (let i = 0; i < this.options.markers.length; i++)
+            for (let i = 0; i < this.__options.markers.length; i++)
             {
-                if (now > this.options.podcastData[i].timestamp)
+                if (now > this.__options.podcastData[i].timestamp)
                 {
-                    this.options.coverImage.attr('src', this.options.podcastData[i].image);
-                    this.options.theTitle.text(this.options.podcastData[i].name)
+                    this.__options.coverImage.attr('src', this.__options.podcastData[i].image);
+                    this.__options.theTitle.text(this.__options.podcastData[i].name)
                 }
-                else if (now < this.options.podcastData[0].timestamp)
+                else if (now < this.__options.podcastData[0].timestamp)
                 {
                     console.log('Bottom')
-                    this.options.coverImage.attr('src', this.options.podcastCategoryImage)
-                    this.options.theTitle.text('Something Bitches')
+                    this.__options.coverImage.attr('src', this.__options.podcastCategoryImage)
+                    this.__options.theTitle.text('Something Bitches')
                 }
             }
 
@@ -153,28 +153,28 @@ class Player
 
         let playAt = (time) =>
         {
-            this.options.audioObject.currentTime = time;
+            this.__options.audioObject.currentTime = time;
         }
 
         // Set the Click Events Here
-        this.options.playButton.on('click', () =>
+        this.__options.playButton.on('click', () =>
         {
-            this.options.audioObject.play()
+            this.__options.audioObject.play()
                 // ESTAT ACTIONS
-            this.options.estatActions.notifyPlayer('play')
+            this.__options.estatActions.notifyPlayer('play')
                 // HIDE PLAY 
-            this.options.playButton.hide();
-            this.options.pauseButton.show();
+            this.__options.playButton.hide();
+            this.__options.pauseButton.show();
         })
 
-        this.options.pauseButton.on('click', () =>
+        this.__options.pauseButton.on('click', () =>
         {
-            this.options.audioObject.pause()
+            this.__options.audioObject.pause()
                 // ESTAT ACTIONS
-            this.options.estatActions.notifyPlayer('pause')
+            this.__options.estatActions.notifyPlayer('pause')
                 // HIDE PAUSE
-            this.options.playButton.show();
-            this.options.pauseButton.hide();
+            this.__options.playButton.show();
+            this.__options.pauseButton.hide();
 
 
         })
