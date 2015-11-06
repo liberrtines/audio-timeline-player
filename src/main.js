@@ -14,19 +14,26 @@ import __ from './variables/variables'
 /* beautify preserve:start */
 import { loadJSON } from './services/Api'
 import { initElements } from './methods/initElements'
-import { initClickEvents } from './methods/initClickEvents'
 import { initViews } from './methods/initViews'
-import { createTimeline } from './methods/createTimeline'
-import { EventListener } from './methods/Events'
 /* beautify preserve:end */
+
+
+import Player from './methods/Player'
+
+let player;
+
+let construct = () =>
+{
+    player = new Player(__)
+}
 
 
 /**
  * 
  *  APPLICATION STARTS HERE
- *	Get the Promise of the JSON call
- *	After success, then load the Mp3 to the player
- *	Then load the remaining methods
+ *  Get the Promise of the JSON call
+ *  After success, then load the Mp3 to the player
+ *  Then load the remaining methods
  * 
  */
 
@@ -34,6 +41,7 @@ loadJSON().then((data) =>
 {
     initAudioObject().then(() =>
     {
+
         /**
             initElements
             ------o Sets empty Objects in Variables.js to a DOM Node in the HTML
@@ -50,9 +58,18 @@ loadJSON().then((data) =>
             initClickEvents
             ------o Calls an action when element it is clicked on
          */
-        
-        Promise.all([initElements(), initViews(), createTimeline(), EventListener(), initClickEvents()])
-        
+
+        Promise.all([
+
+            initElements(),
+            initViews(),
+            construct(),
+            player.createTimeline(),
+            player.EventListener(),
+            player.clickEvents()
+
+        ])
+
     }).catch(() =>
     {
         console.error('There is an error')

@@ -1,7 +1,7 @@
 
  let __ =  {
 
-	audioObject : '',
+	audioObject             : '',
 	firstInit      			:   false,
     coverImage     			:   null,
     timeline       			:   null,
@@ -9,7 +9,6 @@
     theMainTitle   			:   null,
     theTitle       			:   null,
     markers        			:   null,
-    audioInstance  			:   null,
     audioMp3File   			:   null,
     podcastDataCategory 	: 	null,
     podcastData    			:   null,
