@@ -121,7 +121,24 @@ class Player
     {
         this.options.timeline.on('click', (e) =>
         {
-            let now = this.options.duration * (e.offsetX / 1000) * 2;
+            /**
+             * Timeline Calculation
+             * @type {[type]}
+             *
+             *  When a user clicks on the timeline, we need to make sure 
+             *  it goes to the right spot, and updates the audio at that current time
+             *
+             *  Example Calculation
+             *  duration : 148.8239 seconds
+             *  timeline (clicked) offset : 120px
+             *  timeline total width : 300px
+             *
+             *  148.8239 x ( 120 / ( 300 x 2 ) x 2)
+             *  
+             */
+            
+            let now = this.options.duration * (e.offsetX / ( this.options.timeline.outerWidth() * 2 )) * 2;
+
             playAt(now);
 
             for (let i = 0; i < this.options.markers.length; i++)
