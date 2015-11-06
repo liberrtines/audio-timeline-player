@@ -10,9 +10,16 @@ class Player
         this.options = options
     }
 
+    // PROTOTYPES
+
     createTimeline()
     {
 
+        // First set Default Volume on Audio & Slider 
+        this.options.audioObject.volume = this.options.defaultVolume
+        this.options.volumeSlider.val(this.options.defaultVolume)
+
+        // Start Timeline Creation
         if (!this.options.firstInit)
         {
             for (let i = 0; i < this.options.podcastData.length; i++)
@@ -49,6 +56,14 @@ class Player
 
     EventListener()
     {
+
+
+        // Voluem Slider Event Listener
+        this.options.volumeSlider.on('input change', (e) =>
+        {
+            this.options.audioObject.volume = e.target.value
+        })
+
 
         this.options.audioObject.addEventListener('timeupdate', () =>
         {
@@ -93,6 +108,13 @@ class Player
             }
 
         }, false)
+
+        this.options.audioObject.addEventListener('ended', () =>
+        {
+            // Audio has Finished
+            this.options.estatActions.notifyPlayer('stop')
+            this.options.audioObject.currentTime = 0
+        })
     }
 
     clickEvents()
@@ -112,26 +134,26 @@ class Player
             }
 
         })
-        
+
         let playAt = (time) =>
         {
             this.options.audioObject.currentTime = time;
         }
 
         // Set the Click Events Here
-        this.options.playButton.on('click',  () =>
+        this.options.playButton.on('click', () =>
         {
             this.options.audioObject.play()
-            // ESTAT ACTIONS
+                // ESTAT ACTIONS
             this.options.estatActions.notifyPlayer('play')
         })
 
         this.options.pauseButton.on('click', () =>
         {
             this.options.audioObject.pause()
-            // ESTAT ACTIONS
+                // ESTAT ACTIONS
             this.options.estatActions.notifyPlayer('pause')
-            
+
         })
     }
 }

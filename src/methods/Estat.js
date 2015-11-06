@@ -1,4 +1,3 @@
-
 let contentStreamTag;
 
 class Estat
@@ -13,11 +12,11 @@ class Estat
         return new Promise((resolve, reject) =>
         {
 
-            var eS = document.createElement('script');
+            let eS = document.createElement('script');
             eS.type = 'text/javascript';
             eS.async = true;
             eS.src = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'prof.estat.com/js/mu-5.1.js';
-            var s = document.getElementsByTagName('script')[0];
+            let s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(eS, s);
             // 4. Envoi de la mesure
             if (eS.addEventListener)
@@ -50,6 +49,7 @@ class Estat
         console.log('Estat is loaded successfully')
 
         let moreActions = {
+
             getPosition: () =>
             {
                 return Math.round(this.options.audioObject.currentTime);
@@ -66,13 +66,13 @@ class Estat
             {
                 if (moreActions.parseHostName().domain === undefined)
                 {
-                	return 'Unknown'
+                    return 'Unknown'
                 }
                 else
                 {
-                	 return moreActions.parseHostName().domain
+                    return moreActions.parseHostName().domain
                 }
-               
+
             }
         }
 
@@ -94,15 +94,15 @@ class Estat
                 diffusion			: 'replay',
                 callbackPosition	: moreActions.getPosition,
                 playerObj			: this.options.audioObject,
-                playerName			: 'Something',
-                streamName			: 'Something',
+                playerName			: 'Podcast Player',
+                streamName			: this.options.audioMp3File,
                 streamGenre			: 'Podcast',
                 streamDuration		: this.options.audioObject.duration
             },
             levels:
             {
                 level_1				: 'Podcast Player',
-                level_2				: 'Something'
+                level_2				: this.options.podcastDataCategory.category_name
             }
         }
         /* beautify preserve:end */

@@ -14,5 +14,6 @@ export function initElements()
     __.timelineInner = $('#timeline_inner')
     __.playButton = $('#play')
     __.pauseButton = $('#pause')
+    __.volumeSlider = $('input[type="range"]')
 
 }

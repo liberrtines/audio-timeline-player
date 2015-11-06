@@ -12,7 +12,11 @@ import __ from './variables/variables'
 // Import Estat
 import Estat from './methods/Estat'
 
+// Import Player
+import Player from './methods/Player'
 
+// Set Player Object
+let player
 
 
 // Load Functions
@@ -22,12 +26,6 @@ import { initElements } from './methods/initElements'
 import { initViews } from './methods/initViews'
 /* beautify preserve:end */
 
-
-
-
-import Player from './methods/Player'
-
-let player;
 
 let construct = () =>
 {
@@ -49,23 +47,6 @@ loadJSON().then((data) =>
     initAudioObject().then(() =>
     {
 
-        /**
-            initElements
-            ------o Sets empty Objects in Variables.js to a DOM Node in the HTML
-        
-            initViews
-            ------o Updates the HTML views ( album jacket, title, etc..)
-        
-            createTimeline
-            ------o Generates the Markers & WaveForm
-         
-            EventListener
-            ------o Listens for any events, ex. audio playing
-        
-            initClickEvents
-            ------o Calls an action when element it is clicked on
-         */
-
         // Estat Activation
         let estat = new Estat(__)
         estat.loadEstat().then(() =>
@@ -73,6 +54,27 @@ loadJSON().then((data) =>
             // Load Estat Actions into App Global Object for Access
             __.estatActions = estat.loadEstatSuccess()
         })
+
+
+        /**
+            initElements
+            ------o Sets empty Objects in Variables.js to a DOM Node in the HTML
+        
+            initViews
+            ------o Updates the HTML views ( album jacket, title, etc..)
+
+            construct
+            ------o  Creating a new instance of Player Object
+        
+            createTimeline
+            ------o Generates the Markers & WaveForm
+         
+            EventListener
+            ------o Listens for any events, ex. audio playing
+        
+            clickEvents
+            ------o Calls an action when element it is clicked on
+         */
 
         Promise.all([
 

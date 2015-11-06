@@ -16,7 +16,6 @@ export function loadJSON()
             {
                 resolve(data)
                 let Categories = data.Categories
-                let Information = data.Information
 
                 // We should set some variables
                 __.audioMp3File = Categories[__.categoryNumber].mp3_url
