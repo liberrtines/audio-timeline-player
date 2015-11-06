@@ -9,6 +9,11 @@ import './scss/main.scss'
 // Import Variables
 import __ from './variables/variables'
 
+// Import Estat
+import Estat from './methods/Estat'
+
+
+
 
 // Load Functions
 /* beautify preserve:start */
@@ -16,6 +21,8 @@ import { loadJSON } from './services/Api'
 import { initElements } from './methods/initElements'
 import { initViews } from './methods/initViews'
 /* beautify preserve:end */
+
+
 
 
 import Player from './methods/Player'
@@ -58,6 +65,14 @@ loadJSON().then((data) =>
             initClickEvents
             ------o Calls an action when element it is clicked on
          */
+
+        // Estat Activation
+        let estat = new Estat(__)
+        estat.loadEstat().then(() =>
+        {
+            // Load Estat Actions into App Global Object for Access
+            __.estatActions = estat.loadEstatSuccess()
+        })
 
         Promise.all([
 

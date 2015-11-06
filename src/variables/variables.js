@@ -2,6 +2,8 @@
  let __ =  {
 
 	audioObject             : '',
+    autoPlay                :   0,
+    estatId                 :   203003213132,
 	firstInit      			:   false,
     coverImage     			:   null,
     timeline       			:   null,
@@ -18,6 +20,7 @@
     timeDifference 			:   null,
     pauseButton    			:   null,
     playButton     			:   null,
+    estatActions            :   null
 }
 
 export default __

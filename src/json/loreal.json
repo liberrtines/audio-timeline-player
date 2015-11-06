@@ -2,7 +2,9 @@
     "Information":
     {
         "name": "L'Oreal Podcasts",
-        "last updated": "2015-03-20"
+        "last updated": "2015-03-20",
+        "autoPlay" : 0,
+        "estatId"  : 203003213132
     },
     "Categories": [
     {

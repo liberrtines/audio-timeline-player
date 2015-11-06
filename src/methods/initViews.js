@@ -6,7 +6,7 @@ import __ from '../variables/variables'
 
 export function initViews()
 {	
-	console.log(__.coverImage)
+
     __.coverImage.attr('src', __.podcastData[0].image)
     __.theTitle.text(__.podcastData[0].name)
     __.theMainTitle.text(__.podcastDataCategory.category_name)

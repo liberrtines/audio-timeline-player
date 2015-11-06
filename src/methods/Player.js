@@ -2,6 +2,7 @@
 import $ from 'jquery'
 import WaveSurfer from 'wavesurfer.js/dist/wavesurfer.cjs.js'
 
+
 class Player
 {
     constructor(options)
@@ -111,9 +112,7 @@ class Player
             }
 
         })
-
-
-
+        
         let playAt = (time) =>
         {
             this.options.audioObject.currentTime = time;
@@ -123,11 +122,16 @@ class Player
         this.options.playButton.on('click',  () =>
         {
             this.options.audioObject.play()
+            // ESTAT ACTIONS
+            this.options.estatActions.notifyPlayer('play')
         })
 
         this.options.pauseButton.on('click', () =>
         {
             this.options.audioObject.pause()
+            // ESTAT ACTIONS
+            this.options.estatActions.notifyPlayer('pause')
+            
         })
     }
 }
