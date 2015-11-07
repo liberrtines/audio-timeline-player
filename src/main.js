@@ -21,9 +21,10 @@ let player
 
 // Load Functions
 /* beautify preserve:start */
-import { loadJSON } from './services/Api'
-import { initElements } from './core/initElements'
-import { initViews } from './core/initViews'
+import { loadJSON }         from    './services/Api'
+import { initElements }     from    './core/initElements'
+import { initViews }        from    './core/initViews'
+import { initAnimation }    from    './core/initAnimations.js'
 /* beautify preserve:end */
 
 
@@ -82,7 +83,8 @@ loadJSON().then((data) =>
             construct(),
             player.createTimeline(),
             player.EventListener(),
-            player.clickEvents()
+            player.clickEvents(),
+            initAnimation()
 
         ])
 
