@@ -2,7 +2,6 @@
 import $ from 'jquery'
 import WaveSurfer from 'wavesurfer.js/dist/wavesurfer.cjs.js'
 
-
 class Player
 {
     constructor(options)

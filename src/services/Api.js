@@ -28,12 +28,10 @@ export function loadJSON()
 
                     if (isNaN(item.timestamp))
                     {
-                        
-                        item.timestamp = hmsToSecondsOnly(item.timestamp)
 
-                        function hmsToSecondsOnly(str)
+                        let timetoSeconds = (str) =>
                         {
-                            var p = str.split(':'),
+                            let p = str.split(':'),
                                 s = 0,
                                 m = 1;
 
@@ -46,6 +44,9 @@ export function loadJSON()
                             return s;
                         }
 
+
+                        item.timestamp = timetoSeconds(item.timestamp)
+                        
                     }
                 })
 

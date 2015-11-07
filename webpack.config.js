@@ -1,7 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
 
-
 module.exports = {
     entry: [
         './src/main',
@@ -9,8 +8,8 @@ module.exports = {
     ],
     output:
     {
-        path: '/',
-        filename: 'main.js'
+        path: '/dist',
+        filename: 'bundle.js'
     },
     devtool: 'source-map',
     module:
