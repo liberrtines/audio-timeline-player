@@ -10,10 +10,10 @@ import './scss/main.scss'
 import __ from './variables/variables'
 
 // Import Estat
-import Estat from './methods/Estat'
+import Estat from './core/Estat'
 
 // Import Player
-import Player from './methods/Player'
+import Player from './core/Player'
 
 // Set Player Object
 let player
@@ -22,8 +22,8 @@ let player
 // Load Functions
 /* beautify preserve:start */
 import { loadJSON } from './services/Api'
-import { initElements } from './methods/initElements'
-import { initViews } from './methods/initViews'
+import { initElements } from './core/initElements'
+import { initViews } from './core/initViews'
 /* beautify preserve:end */
 
 
@@ -32,13 +32,12 @@ let construct = () =>
     player = new Player(__)
 }
 
-
 /**
  * 
  *  APPLICATION STARTS HERE
  *  Get the Promise of the JSON call
  *  After success, then load the Mp3 to the player
- *  Then load the remaining methods
+ *  Then load the remaining core
  * 
  */
 

@@ -4,7 +4,7 @@ import $ from 'jquery'
 // Import Variables
 import __ from '../variables/variables'
 
-export function loadJSON()
+export let loadJSON = () => 
 {
     return new Promise((resolve, reject) =>
     {
@@ -12,7 +12,7 @@ export function loadJSON()
             {
                 format: "json"
             })
-            .done(function (data)
+            .done((data) =>
             {
                 resolve(data)
                 let Categories = data.Categories
@@ -46,7 +46,7 @@ export function loadJSON()
 
 
                         item.timestamp = timetoSeconds(item.timestamp)
-                        
+
                     }
                 })
 
