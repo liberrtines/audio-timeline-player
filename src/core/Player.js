@@ -98,6 +98,7 @@ class Player
             this.__options.estatActions.notifyPlayer('stop')
             this.__options.audioObject.currentTime = 0.1
 
+            // Repeating Code Here
             this.__options.playButton.show();
             this.__options.pauseButton.hide();
 
@@ -108,6 +109,7 @@ class Player
     {
         this.__options.timeline.on('click', (e) =>
         {
+
             /**
              * Timeline Calculation
              * @type {[type]}
@@ -147,7 +149,6 @@ class Player
                     this.__options.theTitle.text('Something Bitches')
                 }
             }
-
         })
 
         let playAt = (time) =>
@@ -161,22 +162,41 @@ class Player
             this.__options.audioObject.play()
                 // ESTAT ACTIONS
             this.__options.estatActions.notifyPlayer('play')
-                // HIDE PLAY 
+           
+
+            // Repeating Code Here
             this.__options.playButton.hide();
             this.__options.pauseButton.show();
+
+          
         })
 
         this.__options.pauseButton.on('click', () =>
         {
-            this.__options.audioObject.pause()
-                // ESTAT ACTIONS
-            this.__options.estatActions.notifyPlayer('pause')
-                // HIDE PAUSE
-            this.__options.playButton.show();
-            this.__options.pauseButton.hide();
+            // this.__options.audioObject.pause()
+            //     // ESTAT ACTIONS
+            // this.__options.estatActions.notifyPlayer('pause')
+            
 
-
+            // // Repeating Code Here
+            // this.__options.playButton.show();
+            // this.__options.pauseButton.hide();
+            controller()
         })
+
+        let controller = () => 
+        {
+
+            // Check if music is playing
+            this.__options.audioObject.addEventListener('playing', function(){
+                console.log('audio is playingg')
+            })
+
+        }
+
+
+
+
     }
 }
 

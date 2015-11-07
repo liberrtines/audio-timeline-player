@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # audio timeline player
 
 A minimalist Audio Player using the javascript Audio object.
@@ -9,3 +10,6 @@ A minimalist Audio Player using the javascript Audio object.
 - `npm start`
 
 Now open http://localhost:8080, and you should normally see the player.
+=======
+# audio-timeline-player
+>>>>>>> 3f53a91571d9c72a68a843a2458f35a81d00a9eb
