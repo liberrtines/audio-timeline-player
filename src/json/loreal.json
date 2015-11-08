@@ -8,24 +8,24 @@
     },
     "Categories": [
     {
-        "category_name": "L’Oréal Chapter One",
-        "category_image" : "../images/testimage.jpg",
+        "category_name": "Branding Communications",
+        "category_image" : "../images/1.jpg",
         "mp3_url": "mp3/8.mp3",
         "chapters": [
         {
             "name": "DÉCOUVREZ LE NOUVEAU SITE DE LA FONDATION L’ORÉAL",
             "timestamp": "00:11",
-            "image": "http://loreal-dam-front-resources-corp-fr-cdn.brainsonic.com/ressources/afile/130024-9f5c6-picture_client_format_0-fondation.jpg"
+            "image": "../images/2.jpg"
         },
         {
             "name": "CHIFFRE D'AFFAIRES AU 30 SEPTEMBRE 2015",
             "timestamp": "00:33",
-            "image": "http://www.loreal-finance.com/_docs/images_contenu/default312.jpg"
+            "image": "../images/3.jpg"
         },
         {
             "name": "SANOFLORE : DÉCOUVREZ LES POUVOIRS DU BAUME DE ROSÉE SUR VOTRE PEAU",
             "timestamp": "01:00",
-            "image": "http://loreal-dam-front-resources-corp-fr-cdn.brainsonic.com/ressources/afile/129922-f3a2a-picture_client_format_0-sanoflore.jpg"
+            "image": "../images/4.jpg"
         },
         {
             "name": "QUATRE ASTUCES POUR RÉUSSIR SON ENTRETIEN D’EMBAUCHE",

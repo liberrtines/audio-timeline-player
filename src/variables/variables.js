@@ -22,7 +22,8 @@
     pauseButton    			:   null,
     playButton     			:   null,
     volumeSlider            :   null,
-    estatActions            :   null
+    estatActions            :   null,
+    blurElement             :   null
 }
 
 export default __

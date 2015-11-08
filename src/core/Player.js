@@ -48,7 +48,7 @@ class Player
             {
                 container: '#wave-timeline',
                 progressColor: 'rgba(0,0,0,0)',
-                waveColor: '#E1E1E1',
+                waveColor: '#000000',
                 cursorColor: 'rgba(0,0,0,0)'
             });
 
@@ -75,6 +75,20 @@ class Player
                 width: (this.__options.audioObject.currentTime) * this.__options.timeDifference + 'px'
             })
 
+            // -------o Update the Current Time DOM Element
+            function secondsToHms(d)
+            {
+                d = Number(d);
+                var h = Math.floor(d / 3600);
+                var m = Math.floor(d % 3600 / 60);
+                var s = Math.floor(d % 3600 % 60);
+
+                return m + ':' + s
+            }
+
+            // Refactor this, i don't like it
+            $('#nowDuration').text(secondsToHms(this.__options.audioObject.currentTime))
+
             for (let i = $(this.__options.markers).length - 1; i >= 0; i--)
             {
                 if (this.__options.audioObject.currentTime > this.__options.podcastData[i].timestamp)
@@ -83,6 +97,7 @@ class Player
                     {
                         this.__options.coverImage.attr('src', this.__options.podcastData[i].image);
                         this.__options.theTitle.text(this.__options.podcastData[i].name)
+                        this.__options.blurElement.css('background-image', 'url(' + this.__options.podcastData[i].image + ')');
                         this.__options.podcastData[i].seen = true
                     }
 
@@ -146,7 +161,8 @@ class Player
                 {
                     console.log('Bottom')
                     this.__options.coverImage.attr('src', this.__options.podcastCategoryImage)
-                    this.__options.theTitle.text('Something Bitches')
+                    this.__options.blurElement.css('background-image', 'url(' + this.__options.podcastCategoryImage + ')');
+                    this.__options.theTitle.text('Something here')
                 }
             }
         })
@@ -162,37 +178,37 @@ class Player
             this.__options.audioObject.play()
                 // ESTAT ACTIONS
             this.__options.estatActions.notifyPlayer('play')
-           
+
 
             // Repeating Code Here
             this.__options.playButton.hide();
             this.__options.pauseButton.show();
 
-          
+
         })
 
         this.__options.pauseButton.on('click', () =>
         {
-            // this.__options.audioObject.pause()
-            //     // ESTAT ACTIONS
-            // this.__options.estatActions.notifyPlayer('pause')
-            
+            this.__options.audioObject.pause()
+                // ESTAT ACTIONS
+            this.__options.estatActions.notifyPlayer('pause')
 
-            // // Repeating Code Here
-            // this.__options.playButton.show();
-            // this.__options.pauseButton.hide();
-            controller()
+
+            // Repeating Code Here
+            this.__options.playButton.show();
+            this.__options.pauseButton.hide();
+            // controller()
         })
 
-        let controller = () => 
-        {
+        // let controller = () => 
+        // {
 
-            // Check if music is playing
-            this.__options.audioObject.addEventListener('playing', function(){
-                console.log('audio is playingg')
-            })
+        //     // Check if music is playing
+        //     this.__options.audioObject.addEventListener('playing', function(){
+        //         console.log('audio is playingg')
+        //     })
 
-        }
+        // }
 
 
 

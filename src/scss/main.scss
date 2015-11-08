@@ -14,8 +14,9 @@ h2 {
 }
 
 #loreal {
-    width: 500px;
-    height: auto;
+    width: 404px;
+    height: 349px;
+    position: relative;
     background: white;
     text-align: center;
     margin: 0 auto;
@@ -24,131 +25,160 @@ h2 {
     -webkit-box-shadow: 10px 10px 42px 12px rgba(0, 0, 0, 0.27);
     -moz-box-shadow: 10px 10px 42px 12px rgba(0, 0, 0, 0.27);
     box-shadow: 10px 10px 42px 12px rgba(0, 0, 0, 0.27);
-    border-top: 5px solid black;
+    border: 5px solid black;
     .container {
-        @include outer-container() padding: 0 15px;
+        @include outer-container() padding: 0 0px;
     }
-    .header {
-        padding: 10px 20px;
-        height: $headerSize;
-        border-bottom: 1px solid #EDEDED;
-        > div {
+    section {
+        &.top {
             position: relative;
-            height: 100%;
-            &:first-of-type,
-            &:last-of-type {
-                p {
-                    position: absolute;
-                    bottom: 0;
-                }
-            }
-            &:first-of-type {
-                font-size: 1.6em;
-                @include span-columns(6);
-            }
-            &:last-of-type {
-                @include span-columns(6);
-            }
-        }
-    }
-    .content {
-        height: $contentheight;
-        padding-bottom: 20px;
-        > div {
-            padding: 20px 0;
-            &:first-of-type {
-                @include span-columns(5);
-                img {
-                    width: 100%;
-                    position: relative;
-                    left: 0;
-                    right: 0;
-                    overflow: hidden;
-                    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.21);
-                    -webkit-transition: opacity 1s ease-in-out;
-                    -moz-transition: opacity 1s ease-in-out;
-                    -o-transition: opacity 1s ease-in-out;
-                    transition: opacity 1s ease-in-out;
-                    &:before {
-                        content: '';
-                        display: block;
-                        padding-top: 100%;
-                    }
-                }
-            }
-            &:last-of-type {
-                position: relative;
-                height: 100%;
-                @include span-columns(7);
-                h2#maintitle {
-                    color: blue;
-                    padding-top: 10px;
-                }
-                p#title {
-                    padding: 10px 0;
-                    font-size: 0.9em;
-                    line-height: 1.3em;
-                }
-                > div {
-                    position: absolute;
-                    width: 100%;
-                    bottom: 10px;
+            z-index: 2;
+            padding-top: 20px;
+            > div {
+                &.left {
+                    @include span-columns(6);
                     > div {
-                        position: relative;
+                        &.title {
+                            width: 55%;
+                            padding-left: 27px;
+                            position: absolute;
+                            bottom: -157px;
+                            p {
+                                font-family: Baskerville;
+                                font-size: 1.6em;
+                                font-weight: 100;
+                                line-height: 31px;
+                                text-align: left;
+                                overflow-wrap: break-word;
+                            }
+                        }
+                        &.description {
+                            position: relative;
+                            top: 126px;
+                            width: 144%;
+                            padding-left: 28px;
+                            p {
+                                text-align: left;
+                                font-size: 0.8em;
+                                line-height: 1.3em;
+                            }
+                        }
+                    }
+                }
+                &.right {
+                    @include span-columns(6);
+                    img {
+                        width: 151px;
+                        height: 151px;
+                        -webkit-box-shadow: 7px 10px 24px -11px rgba(0, 0, 0, 0.75);
+                        -moz-box-shadow: 7px 10px 24px -11px rgba(0, 0, 0, 0.75);
+                        box-shadow: 7px 10px 24px -11px rgba(0, 0, 0, 0.75);
                     }
                 }
             }
         }
-        .controls {
-            height: 50px;
-            width: 50px;
-            position: relative;
+        &.bottom {
+            width: 90%;
+            height: auto;
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            z-index: 2;
             > div {
-                height: 100%;
-                width: 100%;
-                background-repeat: no-repeat;
-                position: absolute;
-                &#play {
-                    background-image: url('../images/play.svg');
-                    z-index: 10;
+                &.player_controls {
+                    position: relative;
+                    width: 200px;
+                    height: 50px;
+                    bottom: 10px;
+                    text-align: left;
+                    > div {
+                        &.controls {
+                            display: inline-block;
+                            padding: 6px 10px 0 10px;
+                            height: 100%;
+                            width: 43px;
+                            > img {
+                                position: absolute;
+                                &#pause {
+                                    left: 17px;
+                                    display: none;
+                                }
+                            }
+                        }
+                        &.share {
+                            display: inline-block;
+                            padding: 0 10px;
+                            position: relative;
+                            bottom: 17px;
+                        }
+                    }
                 }
-                &#pause {
-                    background-image: url('../images/pause.svg');
+                &.timeline {
+                    position: relative;
+                    width: 100%;
+                    height: 44px;
+                    background: #818181;
+                    cursor: pointer;
+                    border: 3px solid black;
+                    > div {
+                        &.timecode {
+                            position: absolute;
+                            right: 0;
+                            bottom: 45px;
+                            font-size: 0.7em;
+                            color: white;
+                        }
+                        &.timeline_inner {
+                            position: absolute;
+                            background: black;
+                            width: 50%;
+                            opacity: 0.2;
+                            height: 100%;
+                            -webkit-transition: all 0.2s ease-in-out;
+                        }
+                    }
                 }
             }
         }
-        #timeline {
-            width: 100%;
-            height: 30px;
-            background: white;
-            cursor: pointer;
-            border: 1px solid silver;
-            > div {
-                &#timeline_inner {
-                    position: absolute;
-                    background: black;
-                    width: 0%;
-                    opacity: 0.2;
-                    height: 100%;
-                    -webkit-transition: all 0.2s ease-in-out;
-                }
+    }
+    > div {
+        &.blur_element {
+            position: absolute;
+            width: 110px;
+            height: 100%;
+            background: black;
+            right: 0;
+            z-index: 1;
+            background-repeat: no-repeat;
+            background-size: 330%;
+            background-position: 50% 50%;
+            -webkit-filter: blur(9px);
+            overflow: hidden;
+            &:after {
+                position: absolute;
+                content: "";
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 1;
+                background: rgba(0, 0, 0, 0.58);
             }
         }
     }
 }
 
 .markers {
-    width: 2px;
+    width: 1px;
     height: 100%;
-    background: black;
+    background: white;
     position: absolute;
     pointer-events: none;
     z-index: 10;
 }
 
-// .markers:first-of-type {
-//     opacity: 0;
-// }
 #wave-timeline {
     position: absolute;
     height: 100%;
@@ -161,5 +191,6 @@ canvas {
 }
 
 wave {
-    height: 100%!important;
+    height: 76% !important;
+    margin-top: 6px;
 }
