@@ -22,10 +22,10 @@ export let loadJSON = () =>
                 __.audioMp3File = PodcastData.Podcastmp3.categories_list_podcasts_list_filepath
 
                 __.podcastDataCategory = PodcastData
-
+                
                 __.podcastData = PodcastData.Chapter
                 __.podcastCategoryImage = PodcastData.Category.catimg
-
+                
                 __.podcastData.filter((item) =>
                 {
                     if (isNaN(item.timecode))

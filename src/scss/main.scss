@@ -176,7 +176,7 @@ h2 {
                             padding: 0 10px;
                             position: relative;
                             bottom: 17px;
-                            cursor:pointer;
+                            cursor: pointer;
                             &:hover {
                                 .volume_slider {
                                     input {
@@ -196,14 +196,38 @@ h2 {
                                 }
                             }
                             > img {
-                                display: inline-block
+                                display: inline-block;
+                                width: 19px;
+                                &.muted {
+                                    width: 23px;
+                                }
                             }
                             > div {
+                                &.volume_icon {
+                                    width: 20px;
+                                    height: 20px;
+                                    background-image: url('../images/volume_icn.png');
+                                    background-repeat: no-repeat;
+                                    background-size: contain;
+                                    position: relative;
+                                    bottom: -14px;
+                                    left: -3px;
+                                    -webkit-touch-callout: none;
+                                    -webkit-user-select: none;
+                                    -khtml-user-select: none;
+                                    -moz-user-select: none;
+                                    -ms-user-select: none;
+                                    user-select: none;
+                                    &.muted {
+                                        background-image: url('../images/volume_mute_icn.png');
+                                        width: 24px;
+                                    }
+                                }
                                 &.volume_slider {
                                     display: inline-block;
                                     position: relative;
-                                    left: 8px;
-                                    bottom: 6px;
+                                    left: 26px;
+                                    bottom: 7px;
                                     cursor: pointer;
                                     input {
                                         width: 0px;

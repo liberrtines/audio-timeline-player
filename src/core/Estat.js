@@ -46,13 +46,14 @@ class Estat
     loadEstatSuccess()
     {
 
-        console.log('Estat is loaded successfully')
+
 
         let moreActions = {
 
             getPosition: () =>
-            {
-                return Math.round(this.options.audioObject.currentTime);
+            {   
+
+                return Math.floor(Math.round(this.options.audioObject.currentTime * 1000));
             },
             currentUrl: () =>
             {
@@ -76,33 +77,25 @@ class Estat
             }
         }
 
-
-        let getPosition = (player) =>
-        {
-            // TODO : retourner la position à partir du player
-            return Math.round(this.options.audioObject.currentTime);
-        };
-
-
         /* beautify preserve:start */
         let confStreamingAnalytics = {
-            serial					: this.options.estatId,
-            measure					: 'streaming',
-            domainkey				: moreActions.domName(),
+            serial                  : this.options.estatId,
+            measure                 : 'streaming',
+            domainkey               : moreActions.domName(),
             streaming :
             {
-                diffusion			: 'replay',
-                callbackPosition	: moreActions.getPosition,
-                playerObj			: this.options.audioObject,
-                playerName			: 'Podcast Player',
-                streamName			: this.options.audioMp3File,
-                streamGenre			: 'Podcast',
-                streamDuration		: this.options.audioObject.duration
+                diffusion           : 'replay',
+                callbackPosition    : moreActions.getPosition,
+                playerObj           : this.options.audioObject,
+                playerName          : 'Podcast Player',
+                streamName          : this.options.audioMp3File,
+                streamGenre         : 'Podcast',
+                streamDuration      : this.options.audioObject.duration * 1000
             },
             levels:
             {
-                level_1				: 'Podcast Player',
-                level_2				: this.options.podcastDataCategory.category_name
+                level_1             : 'Podcast Player',
+                level_2             : this.options.podcastDataCategory.category_name
             }
         }
         /* beautify preserve:end */

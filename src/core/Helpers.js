@@ -27,3 +27,16 @@ export function timetoSeconds(str)
 
     return s;
 }
+
+
+export function putLocalStorage(options)
+{
+
+    localStorage.setItem('loreal-client-player', JSON.stringify(options));
+}
+
+export function getLocalStorage()
+{
+    return JSON.parse(localStorage.getItem('loreal-client-player'))
+
+}

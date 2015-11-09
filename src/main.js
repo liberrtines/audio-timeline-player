@@ -112,7 +112,7 @@ let initAudioObject = () =>
         {
             __.audioObject.addEventListener('canplay', () =>
             {
-                console.log('can play now')
+
                 resolve(__.audioObject)
             })
         }

@@ -1,6 +1,10 @@
 // Import Plugins
 import $ from 'jquery'
-import { secondsToHms } from '../core/Helpers'
+import
+{
+    secondsToHms, putLocalStorage, getLocalStorage
+}
+from '../core/Helpers'
 import WaveSurfer from 'wavesurfer.js/dist/wavesurfer.cjs.js'
 
 class Player
@@ -16,8 +20,26 @@ class Player
     {
 
         // First set Default Volume on Audio & Slider 
-        this.__options.audioObject.volume = this.__options.defaultVolume
-        this.__options.volumeSlider.val(this.__options.defaultVolume)
+        // Check to see if the volume exists in LocalStorage
+
+        if (getLocalStorage() == null)
+        {
+
+            putLocalStorage(
+            {
+                defaultVolume: this.__options.defaultVolume
+            })
+
+            this.__options.audioObject.volume = this.__options.defaultVolume
+            this.__options.volumeSlider.val(this.__options.defaultVolume)
+        }
+        else
+        {
+            getLocalStorage().defaultVolume = this.__options.defaultVolume
+            this.__options.audioObject.volume = this.__options.defaultVolume
+            this.__options.volumeSlider.val(getLocalStorage().defaultVolume)
+        }
+
 
         // Start Timeline Creation
         if (!this.__options.firstInit)
@@ -66,6 +88,10 @@ class Player
         this.__options.volumeSlider.on('input change', (e) =>
         {
             this.__options.audioObject.volume = e.target.value
+            putLocalStorage(
+            {
+                defaultVolume: e.target.value
+            })
         })
 
         this.__options.audioObject.addEventListener('timeupdate', () =>
@@ -83,7 +109,7 @@ class Player
             })
 
             // -------o Update the Current Time DOM Element
-            
+
 
             // Refactor this, i don't like it
             $('#nowDuration').text(secondsToHms(this.__options.audioObject.currentTime))
@@ -152,7 +178,7 @@ class Player
             // })
             if (typeof window.orientation !== 'undefined')
             {
-                console.log('mobile')
+
                 this.__options.audioObject.play()
                 this.__options.playButton.trigger('click')
             }
@@ -234,9 +260,37 @@ class Player
 
         // }
 
+        // Mute Button
+        // When we toggle this, get the last volume from localStorage
 
+        // this.__options.volumeBtn.toggle(() => {
+        //     if (this.__options.volumeBtn.hasClass('muted')){
+        //         console.log('has class muted')
+        //     } else {
+        //         console.log('no class - muted')
+        //         this.__options.audioObject.volume = 0
+        //         this.__options.volumeSlider.val(0)
+        //     }
+        // })
 
+        this.__options.volumeBtn.on('click', () =>
+        {
+            if (this.__options.volumeBtn.hasClass('muted'))
+            {
+                this.__options.volumeBtn.removeClass('muted')
+                    // set normal value
+                this.__options.audioObject.volume = getLocalStorage().defaultVolume
+                this.__options.volumeSlider.val(getLocalStorage().defaultVolume)
 
+            }
+            else
+            {
+                this.__options.volumeBtn.addClass('muted')
+                this.__options.audioObject.volume = 0
+                this.__options.volumeSlider.val(0)
+            }
+
+        })
     }
 }
 
