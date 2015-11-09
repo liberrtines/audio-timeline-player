@@ -15,18 +15,20 @@ export let loadJSON = () =>
             .done((data) =>
             {
                 resolve(data)
-                let Categories = data.Categories
+                let PodcastData = data[0]
 
                 // We should set some variables
-                __.audioMp3File = Categories[__.categoryNumber].mp3_url
-                __.podcastDataCategory = Categories[__.categoryNumber]
-                __.podcastData = Categories[__.categoryNumber].chapters
-                __.podcastCategoryImage = Categories[__.categoryNumber].category_image
+                __.audioMp3File = PodcastData.Podcastmp3.categories_list_podcasts_list_filepath
+
+                __.podcastDataCategory = PodcastData
+
+                __.podcastData = PodcastData.Chapter
+                __.podcastCategoryImage = PodcastData.Category.catimg
 
                 __.podcastData.filter((item) =>
                 {
 
-                    if (isNaN(item.timestamp))
+                    if (isNaN(item.timecode))
                     {
 
                         let timetoSeconds = (str) =>
@@ -45,7 +47,7 @@ export let loadJSON = () =>
                         }
 
 
-                        item.timestamp = timetoSeconds(item.timestamp)
+                        item.timecode = timetoSeconds(item.timecode)
 
                     }
                 })

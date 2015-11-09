@@ -14,13 +14,16 @@
 
 <body>
     <div id="loreal">
-        <div class="blur_element"></div>
+        <div class="blur_element">
+            <div class="blur_inner"></div>
+        </div>
         <div class="container">
             <section class="top">
                 <div class="left">
                     <img src="images/loreal.svg" alt="">
                     <div class="title">
-                        <p id="maintitle">Branding Communications</p>
+                        <p id="maintitle"></p>
+                        <p>Published on <span class="published_date">03/11/2015</span></p>
                     </div>
                     <div class="description">
                         <p id="title">Some other text here for reference about the podcast, maximum two sentences.</p>
@@ -34,69 +37,31 @@
                 <div class="player_controls">
                     <div class="controls">
                         <img id="play" src="images/playIcn.svg" alt="">
+                        <img id="loading" src="images/loadingIcn.svg" alt="">
                         <img id="pause" src="images/pauseIcn.svg" alt="">
                     </div>
                     <div class="share">
                         <img src="images/shareIcn.svg" alt="">
+                    </div>
+                    <div class="volume">
+                        <img src="images/volumeIcn.svg" alt="">
+                        <div class="volume_slider">
+                            <input type="range" id="volume" max="1" min="0" step="0.01">
+                        </div>
                     </div>
                 </div>
                 <div class="timeline">
                     <div class="timecode">
                         <p><span id="nowDuration">00:00</span> / <span id="totalDuration">02:30</span></p>
                     </div>
+                    <div class="buffered"></div>
                     <div id="wave-timeline"></div>
                     <div class="timeline_inner">
                     </div>
                 </div>
             </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <!--  <section class="header">
-                <div>
-                    <p>L'Oréal</p>
-                </div>
-                <div>
-                    <p>Emissions:</p>
-                </div>
-            </section>
-            <section class="content">
-                <div>
-                    <img id="image" src="" alt="">
-                </div>
-                <div>
-                    <h2 id="maintitle">L'Oréal Chapter One</h2>
-                    <p id="title">Discover the L'oréal Foundation new communication tools</p>
-                    <div>
-                        <div class="controls">
-                            <div id="play"></div>
-                            <div id="pause"></div>
-                        </div>
-                        <div id="timeline">
-                            <div id="wave-timeline"></div>
-                            <div id="timeline_inner"></div>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
         </div>
     </div>
-    <input type="range" id="volume" max="1" min="0" step="0.01">
     <script src="bundle.js"></script>
 </body>
 

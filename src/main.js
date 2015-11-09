@@ -103,9 +103,11 @@ let initAudioObject = () =>
     {
         // Create an Audio Object based on the Mp3 File
         __.audioObject = new Audio(__.audioMp3File);
-        // Set a listener for when the mp3 can play
+        
+        // Set a listener for when the mp3 can play]
         __.audioObject.addEventListener('canplay', () =>
         {
+            console.log('can play now')
             resolve(__.audioObject)
         })
     })

@@ -17,8 +17,8 @@ class Player
         // First set Default Volume on Audio & Slider 
         this.__options.audioObject.volume = this.__options.defaultVolume
         this.__options.volumeSlider.val(this.__options.defaultVolume)
-        console.log(this.__options.podcastData)
-            // Start Timeline Creation
+
+        // Start Timeline Creation
         if (!this.__options.firstInit)
         {
             for (let i = 0; i < this.__options.podcastData.length; i++)
@@ -27,10 +27,10 @@ class Player
                 if ($(this.__options.$markers).length < this.__options.podcastData.length)
                 {
                     this.__options.timeline.append(
-                        '<span class="markers" data-timestamp="'
-                        + this.__options.podcastData[i].timestamp
+                        '<span class="markers" data-timecode="'
+                        + this.__options.podcastData[i].timecode
                         + '" style="left:'
-                        + (this.__options.podcastData[i].timestamp * this.__options.timeDifference)
+                        + (this.__options.podcastData[i].timecode * this.__options.timeDifference)
                         + 'px"></span>');
                 }
                 else
@@ -75,6 +75,12 @@ class Player
                 width: (this.__options.audioObject.currentTime) * this.__options.timeDifference + 'px'
             })
 
+            // Buffered Width
+            this.__options.buffered.css(
+            {
+                width: (this.__options.audioObject.buffered.end(0)) * this.__options.timeDifference + 'px'
+            })
+
             // -------o Update the Current Time DOM Element
             function secondsToHms(d)
             {
@@ -91,13 +97,13 @@ class Player
 
             for (let i = $(this.__options.markers).length - 1; i >= 0; i--)
             {
-                if (this.__options.audioObject.currentTime > this.__options.podcastData[i].timestamp)
+                if (this.__options.audioObject.currentTime > this.__options.podcastData[i].timecode)
                 {
                     if (!this.__options.podcastData[i].seen)
                     {
-                        this.__options.coverImage.attr('src', this.__options.podcastData[i].image);
-                        this.__options.theTitle.text(this.__options.podcastData[i].name)
-                        this.__options.blurElement.css('background-image', 'url(' + this.__options.podcastData[i].image + ')');
+                        this.__options.coverImage.attr('src', this.__options.podcastData[i].cover_url);
+                        this.__options.theTitle.text(this.__options.podcastData[i].title)
+                        this.__options.blurElement.css('background-image', 'url(' + this.__options.podcastData[i].cover_url + ')');
                         this.__options.podcastData[i].seen = true
                     }
 
@@ -112,6 +118,8 @@ class Player
 
             this.__options.estatActions.notifyPlayer('stop')
             this.__options.audioObject.currentTime = 0.1
+            this.__options.coverImage.attr('src', this.__options.podcastCategoryImage)
+            this.__options.theTitle.text(this.__options.podcastDataCategory.Podcastmp3.categories_list_podcasts_list_title)
 
             // Repeating Code Here
             this.__options.playButton.show();
@@ -122,6 +130,7 @@ class Player
 
     clickEvents()
     {
+
         this.__options.timeline.on('click', (e) =>
         {
 
@@ -141,6 +150,15 @@ class Player
              *  
              */
 
+            // this.__options.loadingSpinner.show()
+            // this.__options.pauseButton.hide();
+
+            // this.__options.audioObject.addEventListener('canplay', () => {
+            //      this.__options.loadingSpinner.hide()
+            //      this.__options.pauseButton.show();
+            // })
+
+
             for (let i = 0; i < this.__options.podcastData.length; i++)
             {
                 this.__options.podcastData[i].seen = false;
@@ -150,21 +168,25 @@ class Player
 
             playAt(now);
 
+
             for (let i = 0; i < this.__options.markers.length; i++)
             {
-                if (now > this.__options.podcastData[i].timestamp)
+                if (now > this.__options.podcastData[i].timecode)
                 {
-                    this.__options.coverImage.attr('src', this.__options.podcastData[i].image);
-                    this.__options.theTitle.text(this.__options.podcastData[i].name)
+                    this.__options.coverImage.attr('src', this.__options.podcastData[i].cover_url);
+                    this.__options.theTitle.text(this.__options.podcastData[i].title)
                 }
-                else if (now < this.__options.podcastData[0].timestamp)
+                else if (now < this.__options.podcastData[0].timecode)
                 {
-                    console.log('Bottom')
+
                     this.__options.coverImage.attr('src', this.__options.podcastCategoryImage)
                     this.__options.blurElement.css('background-image', 'url(' + this.__options.podcastCategoryImage + ')');
-                    this.__options.theTitle.text('Something here')
+                    this.__options.theTitle.text(this.__options.podcastDataCategory.Podcastmp3.categories_list_podcasts_list_title)
                 }
             }
+
+
+
         })
 
         let playAt = (time) =>

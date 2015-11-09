@@ -7,25 +7,22 @@ import __ from '../variables/variables'
 export function initViews()
 {
 
-    if (!__.podcastData[0].timestamp == 0)
+    if (!__.podcastData[0].timecode == 0)
     {
         // Set Default Cover Image Here
         __.coverImage.attr('src', __.podcastCategoryImage)
-        __.theTitle.text('Something Here')
-       __.blurElement.css('background-image', 'url(' + __.podcastCategoryImage + ')');
+        __.theTitle.text(__.podcastDataCategory.Podcastmp3.categories_list_podcasts_list_title)
+        __.blurElement.css('background-image', 'url(' + __.podcastCategoryImage + ')');
 
-        // __.blurElement.css({
-        //    'background-image' : 'http://loreal-dam-front-resources-corp-en-cdn.brainsonic.com/ressources/afile/2084-b45b6-picture_photo-jennifer-lopez-face-of-looreal-paris.jpg'
-        // })
     }
     else
     {
-        __.coverImage.attr('src', __.podcastData[0].image)
-        __.theTitle.text(__.podcastData[0].name)
+        __.coverImage.attr('src', __.podcastData[0].catimg)
+        __.theTitle.text(__.podcastData[0].title)
     }
 
-    __.theMainTitle.text(__.podcastDataCategory.category_name)
-
+    __.theMainTitle.text(__.podcastDataCategory.Category.cat_name)
+    __.theDate.text(__.podcastDataCategory.Podcastmp3.categories_list_podcasts_list_date)
     __.duration = __.audioObject.duration
     __.currentTime = __.audioObject.currentTime
     __.timeDifference = __.timeline.width() / __.duration
