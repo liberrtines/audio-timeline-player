@@ -23,9 +23,34 @@ export function initViews()
 
     __.theMainTitle.text(__.podcastDataCategory.Category.cat_name)
     __.theDate.text(__.podcastDataCategory.Podcastmp3.categories_list_podcasts_list_date)
-    __.duration = __.audioObject.duration
+
+    if (typeof window.orientation !== 'undefined')
+    {
+        let timetoSeconds = (str) =>
+        {
+            let p = str.split(':'),
+                s = 0,
+                m = 1;
+
+            while (p.length > 0)
+            {
+                s += m * parseInt(p.pop(), 10);
+                m *= 60;
+            }
+
+            return s;
+        }
+
+        __.duration = timetoSeconds(__.podcastDataCategory.Podcastmp3.duration)
+    }
+    else
+    {
+        __.duration = __.audioObject.duration
+    }   
+
     __.currentTime = __.audioObject.currentTime
     __.timeDifference = __.timeline.width() / __.duration
+
 
     // Refactor This
     function secondsToHms(d)
@@ -39,5 +64,5 @@ export function initViews()
     }
 
 
-    $('#totalDuration').text(secondsToHms(__.audioObject.duration))
+    $('#totalDuration').text(secondsToHms(__.duration))
 }

@@ -1,10 +1,11 @@
 // Import Plugins
 import $ from 'jquery'
+import { timetoSeconds } from '../core/Helpers'
 
 // Import Variables
 import __ from '../variables/variables'
 
-export let loadJSON = () => 
+export let loadJSON = () =>
 {
     return new Promise((resolve, reject) =>
     {
@@ -27,31 +28,11 @@ export let loadJSON = () =>
 
                 __.podcastData.filter((item) =>
                 {
-
                     if (isNaN(item.timecode))
                     {
-
-                        let timetoSeconds = (str) =>
-                        {
-                            let p = str.split(':'),
-                                s = 0,
-                                m = 1;
-
-                            while (p.length > 0)
-                            {
-                                s += m * parseInt(p.pop(), 10);
-                                m *= 60;
-                            }
-
-                            return s;
-                        }
-
-
                         item.timecode = timetoSeconds(item.timecode)
-
                     }
                 })
-
             });
     })
 }

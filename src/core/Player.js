@@ -1,5 +1,6 @@
 // Import Plugins
 import $ from 'jquery'
+import { secondsToHms } from '../core/Helpers'
 import WaveSurfer from 'wavesurfer.js/dist/wavesurfer.cjs.js'
 
 class Player
@@ -82,15 +83,7 @@ class Player
             })
 
             // -------o Update the Current Time DOM Element
-            function secondsToHms(d)
-            {
-                d = Number(d);
-                var h = Math.floor(d / 3600);
-                var m = Math.floor(d % 3600 / 60);
-                var s = Math.floor(d % 3600 % 60);
-
-                return m + ':' + s
-            }
+            
 
             // Refactor this, i don't like it
             $('#nowDuration').text(secondsToHms(this.__options.audioObject.currentTime))
@@ -115,10 +108,11 @@ class Player
         this.__options.audioObject.addEventListener('ended', () =>
         {
             // Audio has Finished
-
             this.__options.estatActions.notifyPlayer('stop')
             this.__options.audioObject.currentTime = 0.1
             this.__options.coverImage.attr('src', this.__options.podcastCategoryImage)
+            this.__options.blurElement.css('background-image', 'url(' + this.__options.podcastCategoryImage + ')');
+
             this.__options.theTitle.text(this.__options.podcastDataCategory.Podcastmp3.categories_list_podcasts_list_title)
 
             // Repeating Code Here
@@ -133,7 +127,6 @@ class Player
 
         this.__options.timeline.on('click', (e) =>
         {
-
             /**
              * Timeline Calculation
              * @type {[type]}
@@ -157,7 +150,16 @@ class Player
             //      this.__options.loadingSpinner.hide()
             //      this.__options.pauseButton.show();
             // })
+            if (typeof window.orientation !== 'undefined')
+            {
+                console.log('mobile')
+                this.__options.audioObject.play()
+                this.__options.playButton.trigger('click')
+            }
+            else
+            {
 
+            }
 
             for (let i = 0; i < this.__options.podcastData.length; i++)
             {

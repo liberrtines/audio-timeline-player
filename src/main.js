@@ -15,7 +15,6 @@ import Estat from './core/Estat'
 // Import Player
 import Player from './core/Player'
 
-
 // Set Player Object
 let player
 
@@ -27,7 +26,6 @@ import { initElements }     from    './core/initElements'
 import { initViews }        from    './core/initViews'
 import { initAnimation }    from    './core/initAnimations.js'
 /* beautify preserve:end */
-
 
 let construct = () =>
 {
@@ -103,12 +101,20 @@ let initAudioObject = () =>
     {
         // Create an Audio Object based on the Mp3 File
         __.audioObject = new Audio(__.audioMp3File);
-        
-        // Set a listener for when the mp3 can play]
-        __.audioObject.addEventListener('canplay', () =>
+
+        // If MOBILE, resolve immediately
+        if (typeof window.orientation !== 'undefined')
         {
-            console.log('can play now')
             resolve(__.audioObject)
-        })
+            __.volumeBtn.hide()
+        }
+        else
+        {
+            __.audioObject.addEventListener('canplay', () =>
+            {
+                console.log('can play now')
+                resolve(__.audioObject)
+            })
+        }
     })
 }

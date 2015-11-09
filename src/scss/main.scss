@@ -1,10 +1,36 @@
 @import 'normalize';
 @import 'bourbon/bourbon';
 @import 'neat/neat';
+@font-face {
+    font-family: 'loreal-baskerville';
+    src: url('fonts/LibreBaskerville-Regular.eot');
+    /* IE9 Compat Modes */
+    src: url('fonts/LibreBaskerville-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('fonts/LibreBaskerville-Regular.woff') format('woff'), /* Modern Browsers */
+    url('fonts/LibreBaskerville-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('fonts/LibreBaskerville-Regular.svg#4355149723c66552092252d98830bbee') format('svg');
+    /* Legacy iOS */
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'loreal-proxima';
+    src: url('fonts/ProximaNova-Regular.eot');
+    /* IE9 Compat Modes */
+    src: url('fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('fonts/ProximaNova-Regular.woff') format('woff'), /* Modern Browsers */
+    url('fonts/ProximaNova-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('fonts/ProximaNova-Regular.svg#2c1459d58560f08b4b0586fbe80aa4cd') format('svg');
+    /* Legacy iOS */
+    font-style: normal;
+    font-weight: 400;
+}
+
 $headerSize: 50px;
 $contentheight: 240px;
 body {
-    font-family: Proxima Nova;
+    font-family: loreal-proxima;
     background: #EFE8F2;
 }
 
@@ -16,6 +42,9 @@ h2 {
 #loreal {
     width: 404px;
     height: 349px;
+    opacity: 0;
+    // -webkit-transition:all 0.5s ease-in-out;
+    -webkit-transform: translate3d(0, 0, 0);
     position: relative;
     background: white;
     text-align: center;
@@ -45,8 +74,8 @@ h2 {
                             bottom: -157px;
                             > p {
                                 &:first-of-type {
-                                    font-family: Baskerville;
-                                    font-size: 1.6em;
+                                    font-family: loreal-baskerville;
+                                    font-size: 1.3em;
                                     font-weight: 100;
                                     line-height: 31px;
                                     text-align: left;
@@ -97,7 +126,7 @@ h2 {
             > div {
                 &.player_controls {
                     position: relative;
-                    width: 200px;
+                    width: 265px;
                     height: 50px;
                     bottom: 10px;
                     text-align: left;
@@ -147,16 +176,23 @@ h2 {
                             padding: 0 10px;
                             position: relative;
                             bottom: 17px;
+                            cursor:pointer;
                             &:hover {
                                 .volume_slider {
                                     input {
                                         width: 64px;
                                         -webkit-transition: width 0.4s ease-in-out;
+                                        transition: width 0.4s ease-in-out;
                                     }
                                 }
                                 input[type=range]::-webkit-slider-thumb {
                                     opacity: 1;
                                     -webkit-transition: opacity 0.4s ease-in-out;
+                                    transition: opacity 0.4s ease-in-out;
+                                }
+                                input[type=range]::-moz-range-thumb {
+                                    opacity: 1;
+                                    transition: opacity 0.4s ease-in-out;
                                 }
                             }
                             > img {
@@ -172,6 +208,7 @@ h2 {
                                     input {
                                         width: 0px;
                                         -webkit-transition: width 0.4s ease-in-out;
+                                        transition: width 0.4s ease-in-out;
                                     }
                                 }
                             }
@@ -200,6 +237,7 @@ h2 {
                             opacity: 0.7;
                             height: 100%;
                             -webkit-transition: all 0.2s ease-in-out;
+                            transition: all 0.2s ease-in-out;
                         }
                         &.buffered {
                             position: absolute;
@@ -237,6 +275,8 @@ h2 {
                 background-size: 330%;
                 background-position: 50% 50%;
                 -webkit-filter: blur(9px);
+                -moz-filer: blur(9px);
+                filter: blur(9px);
                 overflow: hidden;
                 position: absolute;
                 height: 100%;
@@ -282,6 +322,13 @@ input[type=range]::-webkit-slider-runnable-track {
     background: #ddd;
 }
 
+input[type=range]::-moz-range-track {
+    height: 4px;
+    background: #ddd;
+    position: relative;
+    bottom: 1px;
+}
+
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     border: none;
@@ -293,6 +340,20 @@ input[type=range]::-webkit-slider-thumb {
     cursor: pointer;
     opacity: 0;
     -webkit-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
+}
+
+input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 20px;
+    width: 5px;
+    border-radius: 0%;
+    background: goldenrod;
+    margin-top: -7px;
+    cursor: pointer;
+    opacity: 0;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
 }
 
 input[type=range]:focus {
@@ -301,6 +362,11 @@ input[type=range]:focus {
 
 input[type=range]:focus::-webkit-slider-runnable-track {
     background: #ccc;
+}
+
+input[type=range]:-moz-focusring {
+    outline: 0px solid white;
+    outline-offset: -1px;
 }
 
 canvas {
@@ -328,5 +394,11 @@ wave {
     100% {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
+    }
+}
+
+@-moz-document url-prefix() {
+    .volume_slider {
+        bottom: 3px!important;
     }
 }

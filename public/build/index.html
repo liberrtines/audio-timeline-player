@@ -1,42 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IE 9 ]><html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html>
+<!--<![endif]-->
 
 <head>
     <meta charset="UTF-8">
-    <title>Project L'Oréal</title>
+    <meta name="viewport" content="width=device-width">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <![endif]-->
+    <title>project l'oreal</title>
 </head>
 
 <body>
     <div id="loreal">
+        <div class="blur_element">
+            <div class="blur_inner"></div>
+        </div>
         <div class="container">
-            <section class="header">
-                <div>
-                    <p>L'Oréal</p>
+            <section class="top">
+                <div class="left">
+                    <img src="images/loreal.svg" alt="">
+                    <div class="title">
+                        <p id="maintitle"></p>
+                        <p>Published on <span class="published_date">03/11/2015</span></p>
+                    </div>
+                    <div class="description">
+                        <p id="title">Some other text here for reference about the podcast, maximum two sentences.</p>
+                    </div>
                 </div>
-                <div>
-                    <p>Emissions:</p>
+                <div class="right">
+                    <img id="image" alt="">
                 </div>
             </section>
-            <section class="content">
-                <div><img id="image" src="" alt=""></div>
-                <div>
-                    <h2 id="maintitle">L'Oréal Chapter One</h2>
-                    <p id="title">Discover the L'oréal Foundation new communication tools</p>
-                    <div>
-                        <div class="controls">
-                            <div id="play"></div>
-                            <div id="pause"></div>
+            <section class="bottom">
+                <div class="player_controls">
+                    <div class="controls">
+                        <img id="play" src="images/playIcn.svg" alt="">
+                        <img id="loading" src="images/loadingIcn.svg" alt="">
+                        <img id="pause" src="images/pauseIcn.svg" alt="">
+                    </div>
+                    <div class="share">
+                        <img src="images/shareIcn.svg" alt="">
+                    </div>
+                    <div class="volume">
+                        <img src="images/volumeIcn.svg" alt="">
+                        <div class="volume_slider">
+                            <input type="range" id="volume" max="1" min="0" step="0.01">
                         </div>
-                        <div id="timeline">
-                            <div id="wave-timeline"></div>
-                            <div id="timeline_inner"></div>
-                        </div>
+                    </div>
+                </div>
+                <div class="timeline">
+                    <div class="timecode">
+                        <p><span id="nowDuration">00:00</span> / <span id="totalDuration">02:30</span></p>
+                    </div>
+                    <div class="buffered"></div>
+                    <div id="wave-timeline"></div>
+                    <div class="timeline_inner">
                     </div>
                 </div>
             </section>
         </div>
     </div>
-    <input type="range" id="volume" max="1" min="0" step="0.01">
     <script src="js/bundle.min.js"></script>
 </body>
 

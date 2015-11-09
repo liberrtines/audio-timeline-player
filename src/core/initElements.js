@@ -21,5 +21,6 @@ export function initElements()
     __.loadingSpinner = $('#loading')
     __.buffered = $('.buffered')
     __.theCurrentTime = $('.current_time_span')
+    __.volumeBtn = $('.volume')
 
 }
