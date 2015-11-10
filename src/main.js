@@ -86,6 +86,11 @@ loadJSON().then((data) =>
             initAnimation()
 
         ])
+        if (typeof window.orientation !== 'undefined')
+        {
+            __.volumeBtn.hide()
+        }
+
 
     }).catch(() =>
     {
@@ -106,7 +111,6 @@ let initAudioObject = () =>
         if (typeof window.orientation !== 'undefined')
         {
             resolve(__.audioObject)
-            __.volumeBtn.hide()
         }
         else
         {

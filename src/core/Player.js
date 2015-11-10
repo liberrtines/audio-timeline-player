@@ -150,7 +150,6 @@ class Player
 
     clickEvents()
     {
-
         this.__options.timeline.on('click', (e) =>
         {
             /**
