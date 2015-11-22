@@ -1,171 +1,111 @@
-@import 'normalize';
-@import "~susy/sass/susy";
-@import 'bourbon/bourbon';
-
-@import 'fonts.scss';
-
-$susy: ( flow: ltr, columns: 12, gutters: .25, math: fluid, output: float, container-position: center, container: 80%, global-box-sizing: border-box, debug: ( image: hide, color: rgba(#66f, .25), output:background, toggle: top right));
-
-$map: layout(12 .25 inside);
-
-// Padding / Margin inside Box
-@include border-box-sizing;
-
-
+$headerSize: 50px;
+$contentheight: 240px;
 
 body {
-    font-family:TeX Gyre Adventor;
+    font-family: loreal-proxima;
+    background: #EFE8F2;
 }
 
-h1 {
-    font-size:1.8em;
-    font-weight:600;
-}
-
-h3 {
-    font-size:1.2em;
-    font-weight:600;
-}
-
-p {
-    line-height:1.6em;
-}
-
-main {
-    height:100vh;
-    width:100%;
-    overflow:hidden;
-    background:#F4F2F3;
-    @include display(flex);
-    @include justify-content(center)
-    @include align-items(center)
+h2 {
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 #loreal {
-    width:90%;
-    height:80%;
-    background:white;
-    position:relative;
-}
-
-.first,
-.second {
-    position:absolute;
-
-    section {
-        position:relative;
+    width: 404px;
+    height: 349px;
+    opacity: 0;
+    // -webkit-transition:all 0.5s ease-in-out;
+    -webkit-transform: translate3d(0, 0, 0);
+    position: relative;
+    background: white;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    -webkit-box-shadow: 10px 10px 42px 12px rgba(0, 0, 0, 0.27);
+    -moz-box-shadow: 10px 10px 42px 12px rgba(0, 0, 0, 0.27);
+    box-shadow: 10px 10px 42px 12px rgba(0, 0, 0, 0.27);
+    border: 5px solid black;
+    .container {
+        @include outer-container() padding: 0 0px;
     }
-}
-
-.first {
-    @include span(5)
-    height:100%;
-    background-image:url('../images/sideBg.jpg');
-    background-size:cover;
     section {
-        
-    }
-}
-
-.second {
-    height:100%;
-    width:100%;
-    @include display(flex)
-    @include align-items(center)
-    @include justify-content(center)
-    @include flex-direction(column)
-}
-
-.center-first {
-    width:90%;
-    padding:20px 0;
-    > div {
-        &:last-of-type {
-            @include span(6)
-            padding-left:25px;
-            @include last;
-            border-bottom:0.5px solid #F3F3F3;
-            ul {
-                li {
-                    display:inline-block;
-                    text-transform:uppercase;
-                    padding-bottom:10px;
-                    margin-right:50px;
-                    letter-spacing:0.15em;
-                    cursor:pointer;
-                    font-size:0.9em;
-                    &.active {
-                        border-bottom:5px solid #F3F3F3;
+        &.top {
+            position: relative;
+            z-index: 2;
+            padding-top: 20px;
+            > div {
+                &.left {
+                    @include span-columns(6);
+                    > div {
+                        &.title {
+                            width: 55%;
+                            padding-left: 20px;
+                            position: absolute;
+                            bottom: -157px;
+                            > p {
+                                &:first-of-type {
+                                    font-family: loreal-baskerville;
+                                    font-size: 1.3em;
+                                    font-weight: 100;
+                                    line-height: 31px;
+                                    text-align: left;
+                                    overflow-wrap: break-word;
+                                }
+                                &:last-of-type {
+                                    text-align: left;
+                                    font-size: 0.7em;
+                                    color: rgba(0, 0, 0, 0.4);
+                                    padding-top: 6px;
+                                }
+                            }
+                        }
+                        &.description {
+                            position: relative;
+                            top: 126px;
+                            width: 144%;
+                            padding-left: 20px;
+                            p {
+                                text-align: left;
+                                font-size: 0.8em;
+                                line-height: 1.3em;
+                            }
+                        }
+                    }
+                }
+                &.right {
+                    @include span-columns(6);
+                    img {
+                        width: 151px;
+                        height: 151px;
+                        -webkit-box-shadow: 7px 10px 24px -11px rgba(0, 0, 0, 0.75);
+                        -moz-box-shadow: 7px 10px 24px -11px rgba(0, 0, 0, 0.75);
+                        box-shadow: 7px 10px 24px -11px rgba(0, 0, 0, 0.75);
                     }
                 }
             }
         }
-    }
-}
-
-.center {
-    background:white;
-    width:90%;
-    @include display(flex)
-
-    .left {
-        @include span(6)
-        background:brown;
-        box-shadow: -11px 7px 14px 0px rgba(0,0,0,0.50);
-        height:500px;
-        > div {
-            &:first-of-type {
-                height:65%;
-                background-image:url('http://40.media.tumblr.com/3286a392a17c43d8672e23a83097a9ce/tumblr_nxrwo3cBCa1st5lhmo1_1280.jpg');
-                background-size:cover;
-                background-position:50% 50%;
-            }
-            &:last-of-type {
-                height:35%;
-                background:black;
-                color:white;
-                @include display(flex)
-                @include flex-direction(column)
-                @include justify-content(center)
-                
-                article {
-                    text-align:left;
-                    @include container(90%)
-                    h3 {
-                        padding-bottom:7px;
-                    }
-                }
-            }
-        }
-    }
-    .right {
-        @include span(6)
-        @include last;
-        padding-left:25px;
-        background:white;
-        position:relative;
-        .published_date {
-            padding:15px 0;
-            opacity:0.4;
-            font-weight:600;
-        }
-        .bottom_controls {
-            height:auto;
-            background:white;
-            width:100%;
-            position:absolute;
-            bottom:0;
+        &.bottom {
+            width: 90%;
+            height: auto;
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            z-index: 2;
             > div {
                 &.player_controls {
                     position: relative;
                     width: 265px;
                     height: 50px;
-                    bottom:20px;
+                    bottom: 10px;
                     text-align: left;
                     > div {
                         &.controls {
                             display: inline-block;
-                            padding: 6px 0px 0  0px;
+                            padding: 6px 10px 0 10px;
                             height: 100%;
                             width: 43px;
                             > img {
@@ -179,7 +119,7 @@ main {
                                     }
                                 }
                                 &#pause {
-                                    left: 0px;
+                                    left: 17px;
                                     display: none;
                                     -webkit-transition: all 0.3s ease-in-out;
                                     &:hover {
@@ -207,7 +147,7 @@ main {
                             display: inline-block;
                             padding: 0 10px;
                             position: relative;
-                            bottom: 15px;
+                            bottom: 17px;
                             cursor: pointer;
                             &:hover {
                                 .volume_slider {
@@ -259,7 +199,7 @@ main {
                                     display: inline-block;
                                     position: relative;
                                     left: 26px;
-                                    bottom: 9px;
+                                    bottom: 7px;
                                     cursor: pointer;
                                     input {
                                         width: 0px;
@@ -284,11 +224,11 @@ main {
                             right: 0;
                             bottom: 45px;
                             font-size: 0.7em;
-                            color: black;
+                            color: white;
                         }
                         &.timeline_inner {
                             position: absolute;
-                            background: white;
+                            background: #CFA567;
                             width: 0%;
                             opacity: 0.7;
                             height: 100%;
@@ -310,7 +250,7 @@ main {
                             height: auto;
                             padding: 5px 5px;
                             background: black;
-                            color: black;
+                            color: white;
                             z-index: 22;
                         }
                     }
@@ -318,12 +258,55 @@ main {
             }
         }
     }
+    > div {
+        &.blur_element {
+            position: absolute;
+            width: 110px;
+            height: 100%;
+            background: black;
+            right: 0;
+            z-index: 1;
+            > div {
+                background-repeat: no-repeat;
+                background-size: 330%;
+                background-position: 50% 50%;
+                -webkit-filter: blur(9px);
+                -moz-filer: blur(9px);
+                filter: blur(9px);
+                overflow: hidden;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                &:after {
+                    position: absolute;
+                    content: "";
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    opacity: 1;
+                    background: rgba(0, 0, 0, 0.26);
+                }
+            }
+        }
+    }
 }
 
+.markers {
+    width: 1px;
+    height: 100%;
+    background: white;
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+}
 
-
-
-
+#wave-timeline {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+}
 
 // Customize Input Range
 input[type=range] {
@@ -383,23 +366,6 @@ input[type=range]:-moz-focusring {
     outline-offset: -1px;
 }
 
-
-
-.markers {
-    width: 1px;
-    height: 100%;
-    background: white;
-    position: absolute;
-    pointer-events: none;
-    z-index: 10;
-}
-
-#wave-timeline {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    opacity: 0.8;
-}
 canvas {
     height: 100%!important;
 }
@@ -433,7 +399,3 @@ wave {
         bottom: 3px!important;
     }
 }
-
-
-
-

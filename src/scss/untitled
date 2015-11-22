@@ -1,0 +1,50 @@
+<div id="loreal" style="opacity:0;">
+        <div class="blur_element">
+            <div class="blur_inner"></div>
+        </div>
+        <div class="container">
+            <section class="top">
+                <div class="left">
+                    <img src="images/loreal.svg" alt="">
+                    <div class="title">
+                        <p id="maintitle"></p>
+                        <p>Published on <span class="published_date">03/11/2015</span></p>
+                    </div>
+                    <div class="description">
+                        <p id="title">Some other text here for reference about the podcast, maximum two sentences.</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <img id="image" alt="">
+                </div>
+            </section>
+            <section class="bottom">
+                <div class="player_controls">
+                    <div class="controls">
+                        <img id="play" src="images/playIcn.svg" alt="">
+                        <img id="loading" src="images/loadingIcn.svg" alt="">
+                        <img id="pause" src="images/pauseIcn.svg" alt="">
+                    </div>
+                   <!--  <div class="share">
+                        <img src="images/shareIcn.svg" alt="">
+                    </div> -->
+                    <div class="volume">
+                        <!-- <img src="images/volume_icn.png" alt=""> -->
+                        <div class="volume_icon"></div>
+                        <div class="volume_slider">
+                            <input type="range" id="volume" max="1" min="0" step="0.01">
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline">
+                    <div class="timecode">
+                        <p><span id="nowDuration">0:00</span> / <span id="totalDuration">2:30</span></p>
+                    </div>
+                    <div class="buffered"></div>
+                    <div id="wave-timeline"></div>
+                    <div class="timeline_inner">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>

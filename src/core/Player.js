@@ -1,10 +1,6 @@
 // Import Plugins
 import $ from 'jquery'
-import
-{
-    secondsToHms, putLocalStorage, getLocalStorage
-}
-from '../core/Helpers'
+import { secondsToHms, putLocalStorage, getLocalStorage } from '../core/Helpers'
 import WaveSurfer from 'wavesurfer.js/dist/wavesurfer.cjs.js'
 
 class Player
@@ -120,7 +116,9 @@ class Player
                 {
                     if (!this.__options.podcastData[i].seen)
                     {
-                        this.__options.coverImage.attr('src', this.__options.podcastData[i].cover_url);
+                        this.__options.coverImage.css(
+                            'background-image', 'url('+ this.__options.podcastData[i].cover_url + ')');
+
                         this.__options.theTitle.text(this.__options.podcastData[i].title)
                         this.__options.blurElement.css('background-image', 'url(' + this.__options.podcastData[i].cover_url + ')');
                         this.__options.podcastData[i].seen = true
@@ -136,7 +134,9 @@ class Player
             // Audio has Finished
             this.__options.estatActions.notifyPlayer('stop')
             this.__options.audioObject.currentTime = 0.1
-            this.__options.coverImage.attr('src', this.__options.podcastCategoryImage)
+            this.__options.coverImage.css(
+                   'background-image', 'url(' + this.__options.podcastCategoryImage + ')');
+
             this.__options.blurElement.css('background-image', 'url(' + this.__options.podcastCategoryImage + ')');
 
             this.__options.theTitle.text(this.__options.podcastDataCategory.Podcastmp3.categories_list_podcasts_list_title)
@@ -200,13 +200,16 @@ class Player
             {
                 if (now > this.__options.podcastData[i].timecode)
                 {
-                    this.__options.coverImage.attr('src', this.__options.podcastData[i].cover_url);
+                    this.__options.coverImage.css(
+                        'background-image', 'url('+ this.__options.podcastData[i].cover_url+ ')');
+   
                     this.__options.theTitle.text(this.__options.podcastData[i].title)
                 }
                 else if (now < this.__options.podcastData[0].timecode)
                 {
+                    this.__options.coverImage.css('background-image', 'url('+ this.__options.podcastCategoryImage + ')');
+    
 
-                    this.__options.coverImage.attr('src', this.__options.podcastCategoryImage)
                     this.__options.blurElement.css('background-image', 'url(' + this.__options.podcastCategoryImage + ')');
                     this.__options.theTitle.text(this.__options.podcastDataCategory.Podcastmp3.categories_list_podcasts_list_title)
                 }
