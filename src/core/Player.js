@@ -11,10 +11,9 @@ class Player
     }
 
     // PROTOTYPES
-
+    
     createTimeline()
     {
-
         // First set Default Volume on Audio & Slider 
         // Check to see if the volume exists in LocalStorage
 
@@ -45,6 +44,7 @@ class Player
                 /* beautify preserve:start */
                 if ($(this.__options.$markers).length < this.__options.podcastData.length)
                 {
+                    console.log('calculating')
                     this.__options.timeline.append(
                         '<span class="markers" data-timecode="'
                         + this.__options.podcastData[i].timecode

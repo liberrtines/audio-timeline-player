@@ -178,7 +178,7 @@ main {
                 
                 article {
                     text-align:left;
-                    @include container(90%)
+                    padding-left:5%;
                     h3 {
                         padding-bottom:7px;
                     }

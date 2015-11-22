@@ -8,7 +8,7 @@ module.exports = {
     ],
     output:
     {
-        path: '/dist',
+        path: './dist',
         filename: 'bundle.js'
     },
     devtool: 'source-map',
@@ -29,8 +29,8 @@ module.exports = {
             loaders: ["style", "css?sourceMap", "sass?sourceMap"]
         },
         {
-            test: /\.(png|jpg|woff|woff2|eot|ttf|svg)$/,
-            loader: 'url-loader?limit=100000'
+            test: /\.(png|jpg|jpeg|woff|woff2|eot|ttf|svg)$/,
+            loader: 'url-loader'
         }]
     },
     devServer:

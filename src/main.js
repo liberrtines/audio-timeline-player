@@ -74,15 +74,27 @@ loadJSON().then((data) =>
             clickEvents
             ------o Calls an action when element it is clicked on
          */
+        
+        $(window).resize(() => {
+        
+            $('.markers').remove();
+            $('wave').remove();
+            __.firstInit = false
+             initTimeline()
+        })
+
+        function initTimeline() {
+            initViews()
+            construct()
+            player.createTimeline()
+            player.EventListener()
+            player.clickEvents()
+        }
 
         Promise.all([
 
             initElements(),
-            initViews(),
-            construct(),
-            player.createTimeline(),
-            player.EventListener(),
-            player.clickEvents(),
+            initTimeline(),
             initAnimation()
 
         ])
