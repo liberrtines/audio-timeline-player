@@ -74,13 +74,17 @@ loadJSON().then((data) =>
             clickEvents
             ------o Calls an action when element it is clicked on
          */
-        
+
+
         $(window).resize(() => {
         
             $('.markers').remove();
             $('wave').remove();
+            $('.buffered').remove()
             __.firstInit = false
-             initTimeline()
+            setTimeout(function(){
+                initTimeline()
+            },500)
         })
 
         function initTimeline() {
@@ -94,7 +98,7 @@ loadJSON().then((data) =>
         Promise.all([
 
             initElements(),
-            initTimeline(),
+            hello(),
             initAnimation()
 
         ])
@@ -128,9 +132,23 @@ let initAudioObject = () =>
         {
             __.audioObject.addEventListener('canplay', () =>
             {
-
                 resolve(__.audioObject)
             })
         }
     })
+}
+
+// Refactor this code later to keep it DRY
+export function hello() {
+    $('.markers').remove();
+    $('wave').remove();
+    $('.buffered').remove()
+    __.firstInit = false
+    setTimeout(function(){
+        initViews()
+        construct()
+        player.createTimeline()
+        player.EventListener()
+        player.clickEvents()
+    },500)
 }

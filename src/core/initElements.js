@@ -22,5 +22,7 @@ export function initElements()
     __.buffered = $('.buffered')
     __.theCurrentTime = $('.current_time_span')
     __.volumeBtn = $('.volume_icon')
+    __.podcastLink = $('#podcast_link')
+    __.videoLink = $('#video_link')
 
 }
