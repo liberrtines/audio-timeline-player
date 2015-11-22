@@ -110,15 +110,16 @@ main {
 
     .left {
         @include span(6)
-        background:brown;
         box-shadow: -11px 7px 14px 0px rgba(0,0,0,0.50);
         height:500px;
         > div {
             &:first-of-type {
                 height:65%;
-                background-image:url('http://40.media.tumblr.com/3286a392a17c43d8672e23a83097a9ce/tumblr_nxrwo3cBCa1st5lhmo1_1280.jpg');
                 background-size:cover;
                 background-position:50% 50%;
+                @include transition(background-image 0.5s ease-in-out)
+                @include transition-delay(0.2s)
+                @include transform(translate3d(0,0,0))
             }
             &:last-of-type {
                 height:35%;
