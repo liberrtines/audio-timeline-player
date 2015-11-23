@@ -32,6 +32,7 @@ let construct = () =>
     player = new Player(__)
 }
 
+
 /**
  * 
  *  APPLICATION STARTS HERE
@@ -105,9 +106,6 @@ loadJSON().then((data) =>
         {
             console.log('Mobile Detected')
             $('.volume_icon').hide()
-            // $('#play').on('click', () => {
-            //     player.createTimeline()
-            // })
         }
 
 
