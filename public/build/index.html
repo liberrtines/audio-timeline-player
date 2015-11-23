@@ -10,60 +10,74 @@
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <![endif]-->
-    <title>project l'oreal</title>
+    <title>L'Oréal - Conférence Across Antarctica</title>
+    <script src="js/bundle.min.js"></script>
 </head>
 
 <body>
-    <div id="loreal">
-        <div class="blur_element">
-            <div class="blur_inner"></div>
-        </div>
-        <div class="container">
-            <section class="top">
-                <div class="left">
-                    <img src="images/loreal.svg" alt="">
-                    <div class="title">
-                        <p id="maintitle"></p>
-                        <p>Published on <span class="published_date">03/11/2015</span></p>
-                    </div>
-                    <div class="description">
-                        <p id="title">Some other text here for reference about the podcast, maximum two sentences.</p>
+    <main>
+        <section id="loreal">
+            <div class="first">
+                <section>
+                    <img src="images/lorealLogo.png" alt="">
+                </section>
+            </div>
+            <div class="second">
+                <div class="center-first">
+                    <div></div>
+                    <div>
+                        <ul>
+                            <li id="podcast_link" class="active">Podcasts</li>
+                            <li id="video_link">Videos</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="right">
-                    <img id="image" alt="">
-                </div>
-            </section>
-            <section class="bottom">
-                <div class="player_controls">
-                    <div class="controls">
-                        <img id="play" src="images/playIcn.svg" alt="">
-                        <img id="loading" src="images/loadingIcn.svg" alt="">
-                        <img id="pause" src="images/pauseIcn.svg" alt="">
+                <div class="center">
+                    <div class="left">
+                        <div id="image">
+                        </div>
+                        <div>
+                            <article>
+                                <h3 id="maintitle">Chapter1</h3>
+                                <p id="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, beatae!</p>
+                            </article>
+                        </div>
                     </div>
-                    <div class="share">
-                        <img src="images/shareIcn.svg" alt="">
-                    </div>
-                    <div class="volume">
-                        <img src="images/volumeIcn.svg" alt="">
-                        <div class="volume_slider">
-                            <input type="range" id="volume" max="1" min="0" step="0.01">
+
+                    <div class="right">
+                        <h1>Conférence Across Antarctica</h1>
+                        <p class="published_date">06. 11. 2015</p>
+                        <p>L’aventure humaine est une valeur chère chez L’Oréal et c’est à ce titre que ce vendredi 6 novembre, deux aventuriers polaires Stéphanie et Jérémie Gicquel sont venus au siège de L’Oréal, à Paris, présenter leur expédition « Across Antarctica ». Ecoutez leur témoignage ! </p>
+                        <div class="bottom_controls">
+                            <div class="player_controls">
+                                <div class="controls">
+                                    <img id="play" src="images/playIcn.svg" alt="">
+                                    <img id="loading" src="images/loadingIcn.svg" alt="">
+                                    <img id="pause" src="images/pauseIcn.svg" alt="">
+                                </div>
+                                <div class="volume">
+                                    <!-- <img src="images/volume_icn.png" alt=""> -->
+                                    <div class="volume_icon"></div>
+                                    <div class="volume_slider">
+                                        <input type="range" id="volume" max="1" min="0" step="0.01">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline">
+                                <div class="timecode">
+                                    <p><span id="nowDuration">0:00</span> / <span id="totalDuration">2:30</span></p>
+                                </div>
+                                <div class="buffered"></div>
+                                <div id="wave-timeline"></div>
+                                <div class="timeline_inner">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="timeline">
-                    <div class="timecode">
-                        <p><span id="nowDuration">00:00</span> / <span id="totalDuration">02:30</span></p>
-                    </div>
-                    <div class="buffered"></div>
-                    <div id="wave-timeline"></div>
-                    <div class="timeline_inner">
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-    <script src="js/bundle.min.js"></script>
+            </div>
+        </section>
+    </main>
+    
 </body>
-
 </html>

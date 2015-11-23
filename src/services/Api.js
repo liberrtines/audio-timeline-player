@@ -28,6 +28,11 @@ export let loadJSON = () =>
                 
                 __.podcastData.filter((item) =>
                 {
+                    console.log(item)
+                
+                    var img = new Image();
+                    img.src = item.cover_url;
+
                     if (isNaN(item.timecode))
                     {
                         item.timecode = timetoSeconds(item.timecode)

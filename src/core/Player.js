@@ -17,23 +17,28 @@ class Player
         // First set Default Volume on Audio & Slider 
         // Check to see if the volume exists in LocalStorage
 
-        if (getLocalStorage() == null)
-        {
+        if (typeof window.orientation !== 'undefined') {
 
-            putLocalStorage(
+        } else {
+            if (getLocalStorage() == null)
             {
-                defaultVolume: this.__options.defaultVolume
-            })
 
-            this.__options.audioObject.volume = this.__options.defaultVolume
-            this.__options.volumeSlider.val(this.__options.defaultVolume)
-        }
-        else
-        {
-            getLocalStorage().defaultVolume = this.__options.defaultVolume
-            this.__options.audioObject.volume = this.__options.defaultVolume
-            this.__options.volumeSlider.val(getLocalStorage().defaultVolume)
-        }
+                putLocalStorage(
+                {
+                    defaultVolume: this.__options.defaultVolume
+                })
+
+                this.__options.audioObject.volume = this.__options.defaultVolume
+                this.__options.volumeSlider.val(this.__options.defaultVolume)
+            }
+            else
+            {
+                getLocalStorage().defaultVolume = this.__options.defaultVolume
+                this.__options.audioObject.volume = this.__options.defaultVolume
+                this.__options.volumeSlider.val(getLocalStorage().defaultVolume)
+            }
+        } 
+        
 
 
         // Start Timeline Creation
@@ -41,10 +46,11 @@ class Player
         {
             for (let i = 0; i < this.__options.podcastData.length; i++)
             {
+
                 /* beautify preserve:start */
                 if ($(this.__options.$markers).length < this.__options.podcastData.length)
                 {
-                    console.log('calculating')
+
                     this.__options.timeline.append(
                         '<span class="markers" data-timecode="'
                         + this.__options.podcastData[i].timecode
@@ -82,12 +88,17 @@ class Player
 
         // Volume Slider Event Listener
         this.__options.volumeSlider.on('input change', (e) =>
-        {
-            this.__options.audioObject.volume = e.target.value
-            putLocalStorage(
-            {
-                defaultVolume: e.target.value
-            })
+        {   
+            if (typeof window.orientation !== 'undefined') { 
+
+            } else {
+                  this.__options.audioObject.volume = e.target.value
+                  putLocalStorage(
+                  {
+                      defaultVolume: e.target.value
+                  })
+            }
+          
         })
 
         this.__options.audioObject.addEventListener('timeupdate', () =>
@@ -214,9 +225,6 @@ class Player
                     this.__options.theTitle.text(this.__options.podcastDataCategory.Podcastmp3.categories_list_podcasts_list_title)
                 }
             }
-
-
-
         })
 
         let playAt = (time) =>

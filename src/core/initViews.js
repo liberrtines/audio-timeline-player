@@ -7,10 +7,11 @@ import __ from '../variables/variables'
 export function initViews()
 {
 
-    if (!__.podcastData[0].timecode == 0)
+    
+    if (!__.podcastData[0].timecode == 0 && __.appInit == false)
     {
         // Set Default Cover Image Here
-        console.log(__.coverImage)
+        __.appInit = true
         __.coverImage.css('background-image', 'url(' + __.podcastCategoryImage + ')');
         __.theTitle.text(__.podcastDataCategory.Podcastmp3.categories_list_podcasts_list_title)
         __.blurElement.css('background-image', 'url(' + __.podcastCategoryImage + ')');
@@ -18,8 +19,10 @@ export function initViews()
     }
     else
     {
-        __.coverImage.css('background-image', 'url(' + __.podcastData[0].catimg + ')');
-        __.theTitle.text(__.podcastData[0].title)
+        if (__.appInit == false){
+            __.coverImage.css('background-image', 'url(' + __.podcastData[0].catimg + ')');
+            __.theTitle.text(__.podcastData[0].title)
+        }
     }
 
     __.theMainTitle.text(__.podcastDataCategory.Category.cat_name)

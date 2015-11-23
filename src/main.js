@@ -45,7 +45,7 @@ loadJSON().then((data) =>
 {
     initAudioObject().then(() =>
     {
-
+        console.log('init audio object called')
         // Estat Activation
         let estat = new Estat(__)
         estat.loadEstat().then(() =>
@@ -87,6 +87,12 @@ loadJSON().then((data) =>
             },500)
         })
 
+        Promise.all([
+            initElements(),
+            initTimeline(),
+            initAnimation()
+        ])
+
         function initTimeline() {
             initViews()
             construct()
@@ -95,16 +101,13 @@ loadJSON().then((data) =>
             player.clickEvents()
         }
 
-        Promise.all([
-
-            initElements(),
-            hello(),
-            initAnimation()
-
-        ])
         if (typeof window.orientation !== 'undefined')
         {
-            __.volumeBtn.hide()
+            console.log('Mobile Detected')
+            $('.volume_icon').hide()
+            // $('#play').on('click', () => {
+            //     player.createTimeline()
+            // })
         }
 
 
@@ -132,23 +135,9 @@ let initAudioObject = () =>
         {
             __.audioObject.addEventListener('canplay', () =>
             {
+
                 resolve(__.audioObject)
             })
         }
     })
-}
-
-// Refactor this code later to keep it DRY
-export function hello() {
-    $('.markers').remove();
-    $('wave').remove();
-    $('.buffered').remove()
-    __.firstInit = false
-    setTimeout(function(){
-        initViews()
-        construct()
-        player.createTimeline()
-        player.EventListener()
-        player.clickEvents()
-    },500)
 }

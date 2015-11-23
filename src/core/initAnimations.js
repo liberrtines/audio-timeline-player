@@ -1,6 +1,5 @@
 import $ from 'jquery'
 import __ from '../variables/variables'
-import { hello } from '../main.js'
 
 export function initAnimation()
 {
@@ -33,7 +32,11 @@ export function initAnimation()
     function initAudioPage() {
     	if ($(this).hasClass('active')) {
     	} else {
-    		hello()
+    		if (typeof window.orientation !== 'undefined') {
+    			location.reload();
+    		} else {
+    			$(window).trigger('resize');
+    		}    		
     		$(this).addClass('active').siblings().removeClass('active')
 	    	$('.bottom_controls').fadeIn()
 	    	__.theTitle.text(__.podcastDataCategory.Podcastmp3.categories_list_podcasts_list_title)

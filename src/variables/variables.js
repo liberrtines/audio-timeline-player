@@ -5,6 +5,7 @@
     autoPlay                :   0,
     estatId                 :   203003213132,
 	firstInit      			:   false,
+    appInit                 :   false,
     coverImage     			:   null,
     timeline       			:   null,
     timelineInner  			:   null,
